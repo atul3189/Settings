@@ -52,6 +52,14 @@
   [super viewDidLoad];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        [self performSegueWithIdentifier:@"unwindFromKeys" sender:self];
+    }
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
