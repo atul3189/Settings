@@ -28,10 +28,6 @@
     
     NSInteger pkIdx = indexPath.row;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-//    if(cell == nil)
-//    {
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-//    }
     PKHosts *pk = [PKHosts.all objectAtIndex:pkIdx];
     
     // Configure the cell...
