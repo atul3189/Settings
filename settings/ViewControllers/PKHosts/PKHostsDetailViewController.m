@@ -7,6 +7,7 @@
 
 #import "PKHostsDetailViewController.h"
 #import "PKCardViewController.h"
+#import "PKPredictionViewController.h"
 #import "PKCard.h"
 #import "PKHosts.h"
 
@@ -60,6 +61,9 @@
     PKCardViewController *keys = segue.destinationViewController;
     // The host understands the ID, because it is its domain, what it saves.
     [keys makeSelectable:YES initialSelection:self.hostKeyDetail.text];
+  } else if([[segue identifier]isEqualToString:@"predictionModeSegue"]){
+      PKPredictionViewController *prediction = segue.destinationViewController;
+      [prediction performInitialSelection:_predictionDetail.text];
   }
 }
 
@@ -68,7 +72,12 @@
   PKCardViewController * controller = sender.sourceViewController;
   PKCard *pk = [controller selectedObject];
   self.hostKeyDetail.text = pk.ID;
-  
+}
+
+- (IBAction)unwindFromPrediction:(UIStoryboardSegue *)sender
+{
+    PKPredictionViewController * controller = sender.sourceViewController;
+    self.predictionDetail.text = [controller selectedObject];
 }
 
 #pragma mark - Text field validations

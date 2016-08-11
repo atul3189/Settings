@@ -23,6 +23,7 @@
 		B71A2F861D5CC6E0007E0478 /* PKCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F801D5CC6E0007E0478 /* PKCardViewController.m */; };
 		B71A2F871D5CC6E0007E0478 /* PKHostsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F831D5CC6E0007E0478 /* PKHostsDetailViewController.m */; };
 		B71A2F8D1D5CC7CC007E0478 /* PKHostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F8C1D5CC7CC007E0478 /* PKHostsViewController.m */; };
+		B71A2F931D5CFAC3007E0478 /* PKPredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F921D5CFAC3007E0478 /* PKPredictionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		B71A2F831D5CC6E0007E0478 /* PKHostsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHostsDetailViewController.m; sourceTree = "<group>"; };
 		B71A2F8B1D5CC7CC007E0478 /* PKHostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHostsViewController.h; sourceTree = "<group>"; };
 		B71A2F8C1D5CC7CC007E0478 /* PKHostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHostsViewController.m; sourceTree = "<group>"; };
+		B71A2F911D5CFAC3007E0478 /* PKPredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKPredictionViewController.h; sourceTree = "<group>"; };
+		B71A2F921D5CFAC3007E0478 /* PKPredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKPredictionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				B71A2F831D5CC6E0007E0478 /* PKHostsDetailViewController.m */,
 				B71A2F8B1D5CC7CC007E0478 /* PKHostsViewController.h */,
 				B71A2F8C1D5CC7CC007E0478 /* PKHostsViewController.m */,
+				B71A2F911D5CFAC3007E0478 /* PKPredictionViewController.h */,
+				B71A2F921D5CFAC3007E0478 /* PKPredictionViewController.m */,
 			);
 			path = PKHosts;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				B71A2F731D5C29B3007E0478 /* PKDefaults.m in Sources */,
 				B71A2F851D5CC6E0007E0478 /* PKCardDetailsViewController.m in Sources */,
 				075CA5461D593ABC008919AD /* AppDelegate.m in Sources */,
+				B71A2F931D5CFAC3007E0478 /* PKPredictionViewController.m in Sources */,
 				B71A2F8D1D5CC7CC007E0478 /* PKHostsViewController.m in Sources */,
 				B71A2F861D5CC6E0007E0478 /* PKCardViewController.m in Sources */,
 				B71A2F871D5CC6E0007E0478 /* PKHostsDetailViewController.m in Sources */,

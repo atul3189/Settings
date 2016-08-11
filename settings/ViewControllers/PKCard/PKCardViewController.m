@@ -221,6 +221,9 @@
 
 - (id)selectedObject
 {
+    if (_currentSelectionIdx.row == 0) {
+        return 0;
+    }
   return _selectable ? PKCard.all[_currentSelectionIdx.row - 1] : PKCard.all[_currentSelectionIdx.row];
 }
 
