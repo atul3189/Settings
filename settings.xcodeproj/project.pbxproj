@@ -21,6 +21,7 @@
 		B71A2F731D5C29B3007E0478 /* PKDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F6D1D5C29B3007E0478 /* PKDefaults.m */; };
 		B71A2F741D5C29B3007E0478 /* PKFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F6F1D5C29B3007E0478 /* PKFont.m */; };
 		B71A2F751D5C29B3007E0478 /* PKTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F711D5C29B3007E0478 /* PKTheme.m */; };
+		B71A2F781D5C2A81007E0478 /* PKHost.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F771D5C2A81007E0478 /* PKHost.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		B71A2F6F1D5C29B3007E0478 /* PKFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKFont.m; sourceTree = "<group>"; };
 		B71A2F701D5C29B3007E0478 /* PKTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTheme.h; sourceTree = "<group>"; };
 		B71A2F711D5C29B3007E0478 /* PKTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKTheme.m; sourceTree = "<group>"; };
+		B71A2F761D5C2A81007E0478 /* PKHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHost.h; sourceTree = "<group>"; };
+		B71A2F771D5C2A81007E0478 /* PKHost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHost.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				B71A2F6F1D5C29B3007E0478 /* PKFont.m */,
 				B71A2F701D5C29B3007E0478 /* PKTheme.h */,
 				B71A2F711D5C29B3007E0478 /* PKTheme.m */,
+				B71A2F761D5C2A81007E0478 /* PKHost.h */,
+				B71A2F771D5C2A81007E0478 /* PKHost.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71A2F781D5C2A81007E0478 /* PKHost.m in Sources */,
 				B71A2F721D5C29B3007E0478 /* PKCard.m in Sources */,
 				B71A2F731D5C29B3007E0478 /* PKDefaults.m in Sources */,
 				075CA5461D593ABC008919AD /* AppDelegate.m in Sources */,
