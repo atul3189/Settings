@@ -28,7 +28,9 @@ enum PKPrediction{
 @property (nonatomic, strong)NSNumber *prediction;
 
 + (void)initialize;
++ (instancetype)withHost:(NSString *)ID;
 + (BOOL)saveHosts;
++ (instancetype)saveHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(NSString*)prediction;
 + (NSMutableArray *)all;
 + (NSInteger)count;
 

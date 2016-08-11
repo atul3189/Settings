@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class PKHosts;
 @interface PKHostsDetailViewController : UITableViewController
 
+@property (weak, nonatomic) PKHosts *pkHost;
 @end

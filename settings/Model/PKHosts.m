@@ -43,9 +43,36 @@ static NSURL *KeysURL = nil;
     [encoder encodeObject:_prediction forKey:@"prediction"];
 }
 
+- (id)initWithHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(NSString*)prediction
+{
+    self = [super init];
+    if(self){
+        _host = host;
+        _hostName = hostName;
+        _port = [NSNumber numberWithInt:sshPort.intValue];
+        _user = user;
+        _password = password;
+        _key = hostKey;
+        _moshPort = [NSNumber numberWithInt:moshPort.intValue];
+        _moshStartup = startUpCmd;
+        _prediction = [NSNumber numberWithInt:prediction.intValue];
+    }
+    return self;
+}
+
 + (void)initialize
 {
     [PKHosts loadHosts];
+}
+
++ (instancetype)withHost:(NSString *)aHost
+{
+    for (PKHosts *host in Hosts) {
+        if ([host->_host isEqualToString:aHost]) {
+            return host;
+        }
+    }
+    return nil;
 }
 
 + (NSMutableArray *)all
@@ -62,6 +89,30 @@ static NSURL *KeysURL = nil;
 {
     // Save IDs to file
     return [NSKeyedArchiver archiveRootObject:Hosts toFile:KeysURL.path];
+}
+
++ (instancetype)saveHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(NSString*)prediction
+{
+    PKHosts *pkHost = [PKHosts withHost:host];
+    if(!pkHost){
+        pkHost = [[PKHosts alloc]initWithHost:host hostName:hostName sshPort:sshPort user:user password:password hostKey:hostKey moshPort:moshPort startUpCmd:startUpCmd prediction:prediction];
+        [Hosts addObject:pkHost];
+    } else {
+        pkHost.host = host;
+        pkHost.hostName = hostName;
+        pkHost.port = [NSNumber numberWithInt:sshPort.intValue];
+        pkHost.user = user;
+        pkHost.password = password;
+        pkHost.key = hostKey;
+        pkHost.moshPort = [NSNumber numberWithInt:moshPort.intValue];
+        pkHost.moshStartup = startUpCmd;
+        pkHost.prediction = [NSNumber numberWithInt:prediction.intValue];
+    }
+    
+    if(![PKHosts saveHosts]){
+        return nil;
+    }
+    return pkHost;
 }
 
 + (void)loadHosts

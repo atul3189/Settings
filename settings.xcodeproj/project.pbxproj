@@ -22,7 +22,6 @@
 		B71A2F851D5CC6E0007E0478 /* PKCardDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F7E1D5CC6E0007E0478 /* PKCardDetailsViewController.m */; };
 		B71A2F861D5CC6E0007E0478 /* PKCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F801D5CC6E0007E0478 /* PKCardViewController.m */; };
 		B71A2F871D5CC6E0007E0478 /* PKHostsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F831D5CC6E0007E0478 /* PKHostsDetailViewController.m */; };
-		B71A2F8A1D5CC788007E0478 /* PKHostsCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F891D5CC788007E0478 /* PKHostsCreateViewController.m */; };
 		B71A2F8D1D5CC7CC007E0478 /* PKHostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F8C1D5CC7CC007E0478 /* PKHostsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +53,6 @@
 		B71A2F801D5CC6E0007E0478 /* PKCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCardViewController.m; sourceTree = "<group>"; };
 		B71A2F821D5CC6E0007E0478 /* PKHostsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHostsDetailViewController.h; sourceTree = "<group>"; };
 		B71A2F831D5CC6E0007E0478 /* PKHostsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHostsDetailViewController.m; sourceTree = "<group>"; };
-		B71A2F881D5CC788007E0478 /* PKHostsCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHostsCreateViewController.h; sourceTree = "<group>"; };
-		B71A2F891D5CC788007E0478 /* PKHostsCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHostsCreateViewController.m; sourceTree = "<group>"; };
 		B71A2F8B1D5CC7CC007E0478 /* PKHostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHostsViewController.h; sourceTree = "<group>"; };
 		B71A2F8C1D5CC7CC007E0478 /* PKHostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHostsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,8 +151,6 @@
 		B71A2F811D5CC6E0007E0478 /* PKHosts */ = {
 			isa = PBXGroup;
 			children = (
-				B71A2F881D5CC788007E0478 /* PKHostsCreateViewController.h */,
-				B71A2F891D5CC788007E0478 /* PKHostsCreateViewController.m */,
 				B71A2F821D5CC6E0007E0478 /* PKHostsDetailViewController.h */,
 				B71A2F831D5CC6E0007E0478 /* PKHostsDetailViewController.m */,
 				B71A2F8B1D5CC7CC007E0478 /* PKHostsViewController.h */,
@@ -243,7 +238,6 @@
 				B71A2F8D1D5CC7CC007E0478 /* PKHostsViewController.m in Sources */,
 				B71A2F861D5CC6E0007E0478 /* PKCardViewController.m in Sources */,
 				B71A2F871D5CC6E0007E0478 /* PKHostsDetailViewController.m in Sources */,
-				B71A2F8A1D5CC788007E0478 /* PKHostsCreateViewController.m in Sources */,
 				075CA5431D593ABC008919AD /* main.m in Sources */,
 				B71A2F751D5C29B3007E0478 /* PKTheme.m in Sources */,
 				B71A2F741D5C29B3007E0478 /* PKFont.m in Sources */,
