@@ -15,7 +15,7 @@ enum PKPrediction{
     PKPredictionExperimental
 };
 
-@interface PKHost : NSObject<NSCoding>
+@interface PKHosts : NSObject<NSCoding>
 
 @property (nonatomic, strong)NSString *host;
 @property (nonatomic, strong)NSString *hostName;

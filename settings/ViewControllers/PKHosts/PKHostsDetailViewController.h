@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HostsDetailViewController : UITableViewController
+@interface PKHostsDetailViewController : UITableViewController
 
 @end

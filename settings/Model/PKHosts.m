@@ -6,9 +6,9 @@
 //  Copyright © 2016 CARLOS CABANERO. All rights reserved.
 //
 
-#import "PKHost.h"
+#import "PKHosts.h"
 
-@implementation PKHost
+@implementation PKHosts
 
 - (id)initWithCoder:(NSCoder *)coder
 {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hAE-Bj-MeI">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -432,7 +431,7 @@
         <!--New Host-->
         <scene sceneID="1YV-BE-yzt">
             <objects>
-                <tableViewController storyboardIdentifier="createHost" id="B0L-YN-Jg0" customClass="HostsDetailViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="createHost" id="B0L-YN-Jg0" customClass="PKHostsDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Llf-YV-yHv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1504,7 +1503,7 @@
         <image name="shortcuts" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y9I-rB-ZKT"/>
+        <segue reference="9Nb-rb-KdA"/>
         <segue reference="pI0-6X-tsm"/>
     </inferredMetricsTieBreakers>
 </document>

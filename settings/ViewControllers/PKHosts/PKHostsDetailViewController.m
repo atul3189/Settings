@@ -5,15 +5,15 @@
 //  Created by CARLOS CABANERO on 01/07/16.
 //
 
-#import "HostsDetailViewController.h"
+#import "PKHostsDetailViewController.h"
 #import "PKCardViewController.h"
 #import "PKCard.h"
 
-@interface HostsDetailViewController ()
+@interface PKHostsDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *hostKeyDetail;
 @end
 
-@implementation HostsDetailViewController
+@implementation PKHostsDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
