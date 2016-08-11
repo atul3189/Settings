@@ -90,8 +90,8 @@
 		075CA5401D593ABC008919AD /* settings */ = {
 			isa = PBXGroup;
 			children = (
-				B71A2F791D5CC6E0007E0478 /* ViewControllers */,
 				B71A2F691D5C29B3007E0478 /* Model */,
+				B71A2F791D5CC6E0007E0478 /* ViewControllers */,
 				075CA55B1D593D44008919AD /* Media.xcassets */,
 				075CA5581D593C75008919AD /* Settings.storyboard */,
 				075CA5441D593ABC008919AD /* AppDelegate.h */,

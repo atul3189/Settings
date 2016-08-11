@@ -8,6 +8,11 @@
 
 #import "PKHosts.h"
 
+NSMutableArray *Hosts;
+
+static NSURL *DocumentsDirectory = nil;
+static NSURL *KeysURL = nil;
+
 @implementation PKHosts
 
 - (id)initWithCoder:(NSCoder *)coder
@@ -37,5 +42,42 @@
     [encoder encodeObject:_moshStartup forKey:@"moshStartup"];
     [encoder encodeObject:_prediction forKey:@"prediction"];
 }
+
++ (void)initialize
+{
+    [PKHosts loadHosts];
+}
+
++ (NSMutableArray *)all
+{
+    return Hosts;
+}
+
++ (NSInteger)count
+{
+    return [Hosts count];
+}
+
++ (BOOL)saveHosts
+{
+    // Save IDs to file
+    return [NSKeyedArchiver archiveRootObject:Hosts toFile:KeysURL.path];
+}
+
++ (void)loadHosts
+{
+    if (DocumentsDirectory == nil) {
+        //Hosts = [[NSMutableArray alloc] init];
+        DocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+        KeysURL = [DocumentsDirectory URLByAppendingPathComponent:@"hosts"];
+    }
+    
+    // Load IDs from file
+    if ((Hosts = [NSKeyedUnarchiver unarchiveObjectWithFile:KeysURL.path]) == nil) {
+        // Initialize the structure if it doesn't exist
+        Hosts = [[NSMutableArray alloc] init];
+    }
+}
+
 
 @end

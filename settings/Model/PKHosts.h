@@ -27,4 +27,10 @@ enum PKPrediction{
 @property (nonatomic, strong)NSString *moshStartup;
 @property (nonatomic, strong)NSNumber *prediction;
 
++ (void)initialize;
++ (BOOL)saveHosts;
++ (NSMutableArray *)all;
++ (NSInteger)count;
+
+
 @end

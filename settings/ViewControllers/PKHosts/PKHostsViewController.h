@@ -6,8 +6,8 @@
 //  Copyright © 2016 CARLOS CABANERO. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface PKHostsViewController : NSObject
+@interface PKHostsViewController : UITableViewController
 
 @end
