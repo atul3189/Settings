@@ -34,6 +34,18 @@
     [super viewDidLoad];
     
     self.saveButton.enabled = NO;
+    if(_pkHost != nil){
+        _hostField.text = _pkHost.host;
+        _hostNameField.text = _pkHost.hostName;
+        _sshPortField.text = [NSString stringWithFormat:@"%@",_pkHost.port];
+        _userField.text = _pkHost.user;
+        _passwordField.text = _pkHost.password;
+        _hostKeyDetail.text = _pkHost.key;
+        _predictionDetail.text = [NSString stringWithFormat:@"%@",_pkHost.prediction];
+        _moshPortField.text = [NSString stringWithFormat:@"%@",_pkHost.moshPort];
+        _startUpCmdField.text = _pkHost.moshStartup;
+        
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

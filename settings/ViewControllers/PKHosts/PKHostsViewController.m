@@ -7,6 +7,7 @@
 //
 
 #import "PKHostsViewController.h"
+#import "PKHostsDetailViewController.h"
 #import "PKHosts.h"
 
 @implementation PKHostsViewController
@@ -53,12 +54,24 @@
     }
 }
 
-
 #pragma mark - Navigation
 - (IBAction)unwindFromCreate:(UIStoryboardSegue *)sender
 {
     NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKHosts.count - 1) inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"newHost"]) {
+        PKHostsDetailViewController *details = segue.destinationViewController;        
+        NSIndexPath *indexPath = [[self tableView] indexPathForSelectedRow];
+        PKHosts *pkHost = [PKHosts.all objectAtIndex:indexPath.row];
+        details.pkHost = pkHost;
+        return;
+    }
 }
 
 @end

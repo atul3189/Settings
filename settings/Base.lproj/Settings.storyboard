@@ -663,7 +663,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXI-j0-XM4">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Startup" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXI-j0-XM4">
                                                     <rect key="frame" x="170" y="7" width="422" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -880,6 +880,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="B0L-YN-Jg0" kind="show" identifier="newHost" id="2FJ-tI-zVz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -890,7 +893,7 @@
                     <navigationItem key="navigationItem" title="Hosts" id="K9n-EN-F1x">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="tx2-vn-pp9">
                             <connections>
-                                <segue destination="B0L-YN-Jg0" kind="show" id="dMC-e1-GtW"/>
+                                <segue destination="B0L-YN-Jg0" kind="show" identifier="" id="dMC-e1-GtW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1533,7 +1536,8 @@
         <image name="shortcuts" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Nb-rb-KdA"/>
         <segue reference="pI0-6X-tsm"/>
+        <segue reference="dMC-e1-GtW"/>
+        <segue reference="9Nb-rb-KdA"/>
     </inferredMetricsTieBreakers>
 </document>
