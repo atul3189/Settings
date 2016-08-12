@@ -43,7 +43,7 @@ static NSURL *KeysURL = nil;
     [encoder encodeObject:_prediction forKey:@"prediction"];
 }
 
-- (id)initWithHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(NSString*)prediction
+- (id)initWithHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(enum PKPrediction)prediction
 {
     self = [super init];
     if(self){
@@ -55,7 +55,7 @@ static NSURL *KeysURL = nil;
         _key = hostKey;
         _moshPort = [NSNumber numberWithInt:moshPort.intValue];
         _moshStartup = startUpCmd;
-        _prediction = [NSNumber numberWithInt:prediction.intValue];
+        _prediction = [NSNumber numberWithInt:prediction];
     }
     return self;
 }
@@ -91,7 +91,7 @@ static NSURL *KeysURL = nil;
     return [NSKeyedArchiver archiveRootObject:Hosts toFile:KeysURL.path];
 }
 
-+ (instancetype)saveHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(NSString*)prediction
++ (instancetype)saveHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(enum PKPrediction)prediction
 {
     PKHosts *pkHost = [PKHosts withHost:host];
     if(!pkHost){
@@ -106,7 +106,7 @@ static NSURL *KeysURL = nil;
         pkHost.key = hostKey;
         pkHost.moshPort = [NSNumber numberWithInt:moshPort.intValue];
         pkHost.moshStartup = startUpCmd;
-        pkHost.prediction = [NSNumber numberWithInt:prediction.intValue];
+        pkHost.prediction = [NSNumber numberWithInt:prediction];
     }
     
     if(![PKHosts saveHosts]){
@@ -130,5 +130,42 @@ static NSURL *KeysURL = nil;
     }
 }
 
++ (NSString*)predictionStringForRawValue:(int)rawValue
+{
+    NSString *predictionString = nil;
+    switch (rawValue) {
+        case PKPredictionAdaptive:
+            predictionString = @"Adaptive";
+            break;
+        case PKPredictionAlways:
+            predictionString = @"Always";
+            break;
+        case PKPredictionNever:
+            predictionString = @"Never";
+            break;
+        case PKPredictionExperimental:
+            predictionString = @"Experimental";
+            break;
+            
+        default:
+            break;
+    }
+    return predictionString;
+}
+
++ (enum PKPrediction)predictionValueForString:(NSString*)predictionString
+{
+    enum PKPrediction value = PKPredictionUnknown;
+    if([predictionString isEqualToString:@"Adaptive"]){
+        value = PKPredictionAdaptive;
+    } else if([predictionString isEqualToString:@"Always"]){
+        value = PKPredictionAlways;
+    } else if([predictionString isEqualToString:@"Never"]){
+        value = PKPredictionNever;
+    } else if([predictionString isEqualToString:@"Experimental"]){
+        value = PKPredictionExperimental;
+    }
+    return value;
+}
 
 @end

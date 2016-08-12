@@ -41,7 +41,7 @@
         _userField.text = _pkHost.user;
         _passwordField.text = _pkHost.password;
         _hostKeyDetail.text = _pkHost.key;
-        _predictionDetail.text = [NSString stringWithFormat:@"%@",_pkHost.prediction];
+        _predictionDetail.text = [PKHosts predictionStringForRawValue:_pkHost.prediction.intValue];
         _moshPortField.text = [NSString stringWithFormat:@"%@",_pkHost.moshPort];
         _startUpCmdField.text = _pkHost.moshStartup;
         
@@ -126,7 +126,7 @@
         } else if ([_userField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
             errorMsg = @"Spaces are not permitted in the User.";
         } else {
-            _pkHost = [PKHosts saveHost:_hostField.text hostName:_hostNameField.text sshPort:_sshPortField.text user:_userField.text password:_passwordField.text hostKey:_hostKeyDetail.text moshPort:_moshPortField.text startUpCmd:_startUpCmdField.text prediction:_predictionDetail.text];
+            _pkHost = [PKHosts saveHost:_hostField.text hostName:_hostNameField.text sshPort:_sshPortField.text user:_userField.text password:_passwordField.text hostKey:_hostKeyDetail.text moshPort:_moshPortField.text startUpCmd:_startUpCmdField.text prediction:[PKHosts predictionValueForString:_predictionDetail.text]];
             if (!_pkHost) {
                 errorMsg = @"Could not create new host.";
             }
