@@ -24,6 +24,8 @@
 		B71A2F871D5CC6E0007E0478 /* PKHostsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F831D5CC6E0007E0478 /* PKHostsDetailViewController.m */; };
 		B71A2F8D1D5CC7CC007E0478 /* PKHostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F8C1D5CC7CC007E0478 /* PKHostsViewController.m */; };
 		B71A2F931D5CFAC3007E0478 /* PKPredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F921D5CFAC3007E0478 /* PKPredictionViewController.m */; };
+		B746582C1D5F595C00F6890A /* PKKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B746582B1D5F595C00F6890A /* PKKeyboardViewController.m */; };
+		B746582F1D5F598300F6890A /* PKKeyboardModifierViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B746582E1D5F598300F6890A /* PKKeyboardModifierViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,10 @@
 		B71A2F8C1D5CC7CC007E0478 /* PKHostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKHostsViewController.m; sourceTree = "<group>"; };
 		B71A2F911D5CFAC3007E0478 /* PKPredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKPredictionViewController.h; sourceTree = "<group>"; };
 		B71A2F921D5CFAC3007E0478 /* PKPredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKPredictionViewController.m; sourceTree = "<group>"; };
+		B746582A1D5F595C00F6890A /* PKKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKKeyboardViewController.h; sourceTree = "<group>"; };
+		B746582B1D5F595C00F6890A /* PKKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKKeyboardViewController.m; sourceTree = "<group>"; };
+		B746582D1D5F598300F6890A /* PKKeyboardModifierViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKKeyboardModifierViewController.h; sourceTree = "<group>"; };
+		B746582E1D5F598300F6890A /* PKKeyboardModifierViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKKeyboardModifierViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,14 +123,14 @@
 			children = (
 				B71A2F6A1D5C29B3007E0478 /* PKCard.h */,
 				B71A2F6B1D5C29B3007E0478 /* PKCard.m */,
+				B71A2F761D5C2A81007E0478 /* PKHosts.h */,
+				B71A2F771D5C2A81007E0478 /* PKHosts.m */,
 				B71A2F6C1D5C29B3007E0478 /* PKDefaults.h */,
 				B71A2F6D1D5C29B3007E0478 /* PKDefaults.m */,
 				B71A2F6E1D5C29B3007E0478 /* PKFont.h */,
 				B71A2F6F1D5C29B3007E0478 /* PKFont.m */,
 				B71A2F701D5C29B3007E0478 /* PKTheme.h */,
 				B71A2F711D5C29B3007E0478 /* PKTheme.m */,
-				B71A2F761D5C2A81007E0478 /* PKHosts.h */,
-				B71A2F771D5C2A81007E0478 /* PKHosts.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -132,6 +138,7 @@
 		B71A2F791D5CC6E0007E0478 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B71A2F951D5DE8C6007E0478 /* PKKeyboard */,
 				B71A2F7A1D5CC6E0007E0478 /* PKCard */,
 				B71A2F811D5CC6E0007E0478 /* PKHosts */,
 			);
@@ -162,6 +169,17 @@
 				B71A2F921D5CFAC3007E0478 /* PKPredictionViewController.m */,
 			);
 			path = PKHosts;
+			sourceTree = "<group>";
+		};
+		B71A2F951D5DE8C6007E0478 /* PKKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B746582A1D5F595C00F6890A /* PKKeyboardViewController.h */,
+				B746582B1D5F595C00F6890A /* PKKeyboardViewController.m */,
+				B746582D1D5F598300F6890A /* PKKeyboardModifierViewController.h */,
+				B746582E1D5F598300F6890A /* PKKeyboardModifierViewController.m */,
+			);
+			path = PKKeyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +265,8 @@
 				075CA5431D593ABC008919AD /* main.m in Sources */,
 				B71A2F751D5C29B3007E0478 /* PKTheme.m in Sources */,
 				B71A2F741D5C29B3007E0478 /* PKFont.m in Sources */,
+				B746582F1D5F598300F6890A /* PKKeyboardModifierViewController.m in Sources */,
+				B746582C1D5F595C00F6890A /* PKKeyboardViewController.m in Sources */,
 				B71A2F841D5CC6E0007E0478 /* PKCardCreateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

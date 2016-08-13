@@ -16,4 +16,9 @@
 @property (nonatomic, strong) NSNumber *fontSize;
 @property (nonatomic, strong) NSString *defaultUser;
 
+
++ (void)initialize;
++ (BOOL)saveDefaults;
++ (void)setModifer:(NSString*)modifier forKey:(NSString*)key;
+
 @end

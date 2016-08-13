@@ -8,6 +8,9 @@
 
 #import "PKDefaults.h"
 
+static NSURL *DocumentsDirectory = nil;
+static NSURL *KeysURL = nil;
+PKDefaults *defaults;
 @implementation PKDefaults
 
 
@@ -33,5 +36,27 @@
     [encoder encodeObject:_defaultUser forKey:@"defaultUser"];
 }
 
++ (void)initialize
+{
+    [PKDefaults loadHosts];
+}
++ (void)loadHosts
+{
+    if (DocumentsDirectory == nil) {
+        //Hosts = [[NSMutableArray alloc] init];
+        DocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+        KeysURL = [DocumentsDirectory URLByAppendingPathComponent:@"hosts"];
+    }
+    
+    // Load IDs from file
+    if ((defaults = [NSKeyedUnarchiver unarchiveObjectWithFile:KeysURL.path]) == nil) {
+        // Initialize the structure if it doesn't exist
+        defaults = [[PKDefaults alloc]init];
+    }
+}
+
++ (void)setModifer:(NSString*)modifier forKey:(NSString*)key{
+    
+}
 
 @end
