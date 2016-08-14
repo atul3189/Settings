@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+enum PKKeyBoardModifiers{
+    PKKeyBoardModifierNone,
+    PKKeyBoardModifierCtrl,
+    PKKeyBoardModifierMeta,
+    PKKeyBoardModifierEsc
+};
+
 @interface PKDefaults : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSMutableDictionary *keyboardMaps;
@@ -20,5 +27,5 @@
 + (void)initialize;
 + (BOOL)saveDefaults;
 + (void)setModifer:(NSString*)modifier forKey:(NSString*)key;
-
++ (NSMutableArray*)keyboardModifierList;
 @end

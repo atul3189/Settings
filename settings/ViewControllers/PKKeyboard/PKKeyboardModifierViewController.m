@@ -7,7 +7,7 @@
 //
 
 #import "PKKeyboardModifierViewController.h"
-
+#import "PKDefaults.h"
 @interface PKKeyboardModifierViewController ()
 
 @property (nonatomic, strong) NSIndexPath* currentSelectionIdx;
@@ -41,7 +41,7 @@
 }
 
 - (void)loadData{
-    _items = [NSMutableArray arrayWithObjects:@"None", @"Ctrl", @"Meta", @"Esc", nil];
+    _items = [PKDefaults keyboardModifierList];
 }
 
 - (void)performInitialSelection:(NSString *)selectedModifier

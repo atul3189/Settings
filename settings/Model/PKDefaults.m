@@ -59,4 +59,8 @@ PKDefaults *defaults;
     
 }
 
++ (NSMutableArray*)keyboardModifierList{
+    return [NSMutableArray arrayWithObjects:@"None", @"Ctrl", @"Meta", @"Esc", nil];
+}
+
 @end

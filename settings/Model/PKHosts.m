@@ -168,4 +168,7 @@ static NSURL *KeysURL = nil;
     return value;
 }
 
++ (NSMutableArray*)predictionStringList{
+    return [NSMutableArray arrayWithObjects:@"Adaptive", @"Always", @"Never", @"Experimental", nil];
+}
 @end

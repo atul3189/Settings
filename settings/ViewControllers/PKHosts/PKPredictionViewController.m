@@ -7,7 +7,7 @@
 //
 
 #import "PKPredictionViewController.h"
-
+#import "PKHosts.h"
 @interface PKPredictionViewController ()
 @property (nonatomic, strong) NSMutableArray *items;
 @property NSIndexPath *currentSelectionIdx;
@@ -45,7 +45,7 @@
 }
 
 - (void)loadData{
-    _items = [NSMutableArray arrayWithObjects:@"Adaptive", @"Always", @"Never", @"Experimental", nil];
+    _items = [PKHosts predictionStringList];
 }
 
 - (void)performInitialSelection:(NSString *)selectedPrediction

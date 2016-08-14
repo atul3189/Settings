@@ -36,4 +36,5 @@ enum PKPrediction{
 + (NSInteger)count;
 + (NSString*)predictionStringForRawValue:(int)rawValue;
 + (enum PKPrediction)predictionValueForString:(NSString*)predictionString;
++ (NSMutableArray*)predictionStringList;
 @end
