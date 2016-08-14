@@ -18,6 +18,7 @@
 		B7041F9F1D60702F002ACD9B /* PKCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7041F9C1D60702F002ACD9B /* PKCardViewController.m */; };
 		B7041FA51D60762E002ACD9B /* PKFontCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7041FA41D60762E002ACD9B /* PKFontCreateViewController.m */; };
 		B7041FA81D607642002ACD9B /* PKThemeCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7041FA71D607642002ACD9B /* PKThemeCreateViewController.m */; };
+		B7041FAC1D607F8F002ACD9B /* PKSettingsFileDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = B7041FAB1D607F8F002ACD9B /* PKSettingsFileDownloader.m */; };
 		B71A2F721D5C29B3007E0478 /* PKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F6B1D5C29B3007E0478 /* PKCard.m */; };
 		B71A2F731D5C29B3007E0478 /* PKDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F6D1D5C29B3007E0478 /* PKDefaults.m */; };
 		B71A2F741D5C29B3007E0478 /* PKFont.m in Sources */ = {isa = PBXBuildFile; fileRef = B71A2F6F1D5C29B3007E0478 /* PKFont.m */; };
@@ -50,6 +51,8 @@
 		B7041FA41D60762E002ACD9B /* PKFontCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKFontCreateViewController.m; sourceTree = "<group>"; };
 		B7041FA61D607642002ACD9B /* PKThemeCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKThemeCreateViewController.h; sourceTree = "<group>"; };
 		B7041FA71D607642002ACD9B /* PKThemeCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKThemeCreateViewController.m; sourceTree = "<group>"; };
+		B7041FAA1D607F8F002ACD9B /* PKSettingsFileDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKSettingsFileDownloader.h; sourceTree = "<group>"; };
+		B7041FAB1D607F8F002ACD9B /* PKSettingsFileDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKSettingsFileDownloader.m; sourceTree = "<group>"; };
 		B71A2F6A1D5C29B3007E0478 /* PKCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCard.h; sourceTree = "<group>"; };
 		B71A2F6B1D5C29B3007E0478 /* PKCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCard.m; sourceTree = "<group>"; };
 		B71A2F6C1D5C29B3007E0478 /* PKDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKDefaults.h; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 		075CA5401D593ABC008919AD /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				B7041FA91D607F5A002ACD9B /* Network */,
 				B71A2F691D5C29B3007E0478 /* Model */,
 				B71A2F791D5CC6E0007E0478 /* ViewControllers */,
 				075CA55B1D593D44008919AD /* Media.xcassets */,
@@ -153,6 +157,15 @@
 				B7041FA71D607642002ACD9B /* PKThemeCreateViewController.m */,
 			);
 			path = PKTheme;
+			sourceTree = "<group>";
+		};
+		B7041FA91D607F5A002ACD9B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B7041FAA1D607F8F002ACD9B /* PKSettingsFileDownloader.h */,
+				B7041FAB1D607F8F002ACD9B /* PKSettingsFileDownloader.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		B71A2F691D5C29B3007E0478 /* Model */ = {
@@ -295,6 +308,7 @@
 				B7041FA51D60762E002ACD9B /* PKFontCreateViewController.m in Sources */,
 				B746582C1D5F595C00F6890A /* PKKeyboardViewController.m in Sources */,
 				B7041F9D1D60702F002ACD9B /* PKCardCreateViewController.m in Sources */,
+				B7041FAC1D607F8F002ACD9B /* PKSettingsFileDownloader.m in Sources */,
 				B7041F9E1D60702F002ACD9B /* PKCardDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "PKFontCreateViewController.h"
+#import "PKSettingsFileDownloader.h"
 
 @interface PKFontCreateViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *importButton;
@@ -32,6 +33,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - Validations
+
 - (IBAction)urlTextDidChange:(id)sender {
     NSURL *url = [NSURL URLWithString:_urlTextField.text];
     if (url && url.scheme && url.host){
@@ -42,5 +45,10 @@
     
 }
 
+- (IBAction)importButtonClicked:(id)sender{
+    [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSString *filePath, NSError *error) {
+        
+    }];
+}
 
 @end
