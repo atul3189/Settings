@@ -72,7 +72,6 @@
     return _items.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"predictionCell" forIndexPath:indexPath];
     cell.textLabel.text = [_items objectAtIndex:indexPath.row];
@@ -84,8 +83,6 @@
     return cell;
 }
 
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_currentSelectionIdx != nil) {
@@ -96,6 +93,5 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
 }
-
 
 @end

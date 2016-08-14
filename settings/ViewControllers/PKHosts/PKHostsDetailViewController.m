@@ -92,27 +92,6 @@
     self.predictionDetail.text = [controller selectedObject];
 }
 
-#pragma mark - Text field validations
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if (textField == _hostField || textField == _hostNameField || textField == _userField) {
-        if ([string isEqualToString:@" "]) {
-            return NO;
-        }
-    }
-    return YES;
-}
-
-- (IBAction)textFieldDidChange:(id)sender
-{
-    if(_hostField.text.length && _hostNameField.text.length && _userField.text.length){
-        self.saveButton.enabled = YES;
-    } else {
-        self.saveButton.enabled = NO;
-    }
-}
-
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     NSString *errorMsg;
@@ -144,6 +123,27 @@
     }
     
     return YES;
+}
+
+#pragma mark - Text field validations
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == _hostField || textField == _hostNameField || textField == _userField) {
+        if ([string isEqualToString:@" "]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+- (IBAction)textFieldDidChange:(id)sender
+{
+    if(_hostField.text.length && _hostNameField.text.length && _userField.text.length){
+        self.saveButton.enabled = YES;
+    } else {
+        self.saveButton.enabled = NO;
+    }
 }
 
 @end
