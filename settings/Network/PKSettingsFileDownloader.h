@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface PKSettingsFileDownloader : NSObject
-+ (void)downloadFileAtUrl:(NSString*)urlString withCompletionHandler:(void(^)(NSString *filePath, NSError *error))completionHandler;
++ (void)downloadFileAtUrl:(NSString*)urlString withCompletionHandler:(void(^)(NSData *fileData, NSError *error))completionHandler;
 
 @end

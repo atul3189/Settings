@@ -89,7 +89,7 @@ static NSURL *ThemesURL = nil;
 {
     if (DocumentsDirectory == nil) {
         DocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-        ThemesURL = [DocumentsDirectory URLByAppendingPathComponent:@"hosts"];
+        ThemesURL = [DocumentsDirectory URLByAppendingPathComponent:@"themes"];
     }
     
     // Load IDs from file

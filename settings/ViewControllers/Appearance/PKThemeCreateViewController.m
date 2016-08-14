@@ -13,7 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *importButton;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (strong, nonatomic) NSString *tempFilePath;
+@property (strong, nonatomic) NSData *tempFileData;
+@property (assign, nonatomic) BOOL downloadCompleted;
 @end
 
 @implementation PKThemeCreateViewController
@@ -26,6 +27,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        [self performSegueWithIdentifier:@"unwindFromAddTheme" sender:self];
+    }
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +54,7 @@
 }
 
 - (IBAction)nameFieldDidChange:(id)sender {
-    if (self.nameTextField.text.length > 0) {
+    if (self.nameTextField.text.length > 0 && _downloadCompleted) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -54,20 +63,20 @@
 
 
 - (IBAction)importButtonClicked:(id)sender{
-    [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSString *filePath, NSError *error) {
+    [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSData *fileData, NSError *error) {
         if(error == nil){
-            [self performSelectorOnMainThread:@selector(downloadCompletedWithFilePath:) withObject:filePath waitUntilDone:NO];
+            [self performSelectorOnMainThread:@selector(downloadCompletedWithFilePath:) withObject:fileData waitUntilDone:NO];
         } else {
             //Show alert
         }
     }];
 }
 
-- (void)downloadCompletedWithFilePath:(NSString*)filePath{
+- (void)downloadCompletedWithFilePath:(NSData*)fileData{
     self.importButton.enabled = NO;
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(didTapOnSave:)];
-    [self.navigationItem setRightBarButtonItem:barButton];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    _downloadCompleted = YES;
+    _tempFileData = fileData;
+    [self nameFieldDidChange:self.nameTextField];
 }
 
 - (IBAction)didTapOnSave:(id)sender{
@@ -76,10 +85,14 @@
     } else {        
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,self.nameTextField.text];
-        [[NSFileManager defaultManager]copyItemAtURL:[NSURL URLWithString:_tempFilePath] toURL:[NSURL URLWithString:filePath] error:nil];
+        NSString *folderPath = [NSString stringWithFormat:@"%@/Themes/",documentsDirectory];
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@", folderPath,self.nameTextField.text];
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
+        NSError *error;
+        [_tempFileData writeToURL:[NSURL fileURLWithPath:filePath] options:NSDataWritingAtomic error:&error];
         [PKTheme saveTheme:self.nameTextField.text withFilePath:filePath];
         [PKTheme saveThemes];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 @end

@@ -8,11 +8,15 @@
 
 #import "PKFontCreateViewController.h"
 #import "PKSettingsFileDownloader.h"
+#import "PKFont.h"
 
 @interface PKFontCreateViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *importButton;
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) NSData *tempFileData;
+@property (assign, nonatomic) BOOL downloadCompleted;
 
 @end
 
@@ -28,6 +32,15 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        [self performSegueWithIdentifier:@"unwindFromAddFont" sender:self];
+    }
+    [super viewWillDisappear:animated];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -42,27 +55,50 @@
     } else {
         self.importButton.enabled = NO;
     }
-    
 }
 
+- (IBAction)nameFieldDidChange:(id)sender {
+    if (self.nameTextField.text.length > 0 && _downloadCompleted) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+}
+
+
 - (IBAction)importButtonClicked:(id)sender{
-    [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSString *filePath, NSError *error) {
+    [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSData *fileData, NSError *error) {
         if(error == nil){
-            [self downloadCompletedWithFilePath:filePath];
+            [self performSelectorOnMainThread:@selector(downloadCompletedWithFilePath:) withObject:fileData waitUntilDone:NO];
         } else {
             //Show alert
         }
     }];
 }
 
-- (void)downloadCompletedWithFilePath:(NSString*)filePath{
+- (void)downloadCompletedWithFilePath:(NSData*)fileData{
     self.importButton.enabled = NO;
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(didTapOnSave:)];
-    [self.navigationItem setRightBarButtonItem:barButton];
+    _downloadCompleted = YES;
+    _tempFileData = fileData;
+    [self nameFieldDidChange:self.nameTextField];
 }
 
 - (IBAction)didTapOnSave:(id)sender{
-    
+    if([PKFont withFont:self.nameTextField.text]){
+        //Error
+    } else {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *folderPath = [NSString stringWithFormat:@"%@/Fonts/",documentsDirectory];
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@", folderPath,self.nameTextField.text];
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
+        NSError *error;
+        [_tempFileData writeToURL:[NSURL fileURLWithPath:filePath] options:NSDataWritingAtomic error:&error];
+        [PKFont saveFont:self.nameTextField.text withFilePath:filePath];
+        [PKFont saveFonts];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
+
 
 @end

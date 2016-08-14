@@ -10,7 +10,7 @@
 static NSURLSessionDownloadTask *downloadTask;
 @implementation PKSettingsFileDownloader
 
-+ (void)downloadFileAtUrl:(NSString*)urlString withCompletionHandler:(void(^)(NSString *filePath, NSError *error))completionHandler
++ (void)downloadFileAtUrl:(NSString*)urlString withCompletionHandler:(void(^)(NSData *fileData, NSError *error))completionHandler
 {
     if(downloadTask != nil || downloadTask.state == NSURLSessionTaskStateRunning){
         [downloadTask cancel];
@@ -21,7 +21,7 @@ static NSURLSessionDownloadTask *downloadTask;
     NSURLSessionDownloadTask *downloadTask = [[NSURLSession sharedSession]
                                                    downloadTaskWithURL:url completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error)
                                                    {
-                                                       completionHandler(location.absoluteString, error);
+                                                       completionHandler([NSData dataWithContentsOfURL:location], error);
                                                    }];
     
     [downloadTask resume];
