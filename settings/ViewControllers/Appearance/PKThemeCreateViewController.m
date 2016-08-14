@@ -63,6 +63,9 @@
 
 
 - (IBAction)importButtonClicked:(id)sender{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    self.urlTextField.enabled = NO;
+    self.importButton.enabled = NO;
     [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSData *fileData, NSError *error) {
         if(error == nil){
             [self performSelectorOnMainThread:@selector(downloadCompletedWithFilePath:) withObject:fileData waitUntilDone:NO];
@@ -73,6 +76,7 @@
 }
 
 - (void)downloadCompletedWithFilePath:(NSData*)fileData{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     self.importButton.enabled = NO;
     _downloadCompleted = YES;
     _tempFileData = fileData;
