@@ -13,4 +13,11 @@
 @property (nonatomic, strong)NSString *name;
 @property (nonatomic, strong)NSString *filepath;
 
++ (void)initialize;
++ (instancetype)withTheme:(NSString *)themeName;
++ (BOOL)saveThemes;
++ (instancetype)saveTheme:(NSString*)themeName withFilePath:(NSString*)filePath;
++ (NSMutableArray *)all;
++ (NSInteger)count;
+
 @end

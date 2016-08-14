@@ -118,7 +118,6 @@ static NSURL *HostsURL = nil;
 + (void)loadHosts
 {
     if (DocumentsDirectory == nil) {
-        //Hosts = [[NSMutableArray alloc] init];
         DocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
         HostsURL = [DocumentsDirectory URLByAppendingPathComponent:@"hosts"];
     }
