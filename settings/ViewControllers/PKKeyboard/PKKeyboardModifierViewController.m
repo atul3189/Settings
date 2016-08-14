@@ -35,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (id)selectedObject
+- (NSString*)selectedObject
 {
     return _items[_currentSelectionIdx.row];
 }

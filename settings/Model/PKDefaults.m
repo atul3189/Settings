@@ -9,7 +9,7 @@
 #import "PKDefaults.h"
 
 static NSURL *DocumentsDirectory = nil;
-static NSURL *KeysURL = nil;
+static NSURL *DefaultsURL = nil;
 PKDefaults *defaults;
 @implementation PKDefaults
 
@@ -38,29 +38,49 @@ PKDefaults *defaults;
 
 + (void)initialize
 {
-    [PKDefaults loadHosts];
+    [PKDefaults loadDefaults];
 }
-+ (void)loadHosts
++ (void)loadDefaults
 {
     if (DocumentsDirectory == nil) {
         //Hosts = [[NSMutableArray alloc] init];
         DocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-        KeysURL = [DocumentsDirectory URLByAppendingPathComponent:@"hosts"];
+        DefaultsURL = [DocumentsDirectory URLByAppendingPathComponent:@"defaults"];
     }
     
     // Load IDs from file
-    if ((defaults = [NSKeyedUnarchiver unarchiveObjectWithFile:KeysURL.path]) == nil) {
+    if ((defaults = [NSKeyedUnarchiver unarchiveObjectWithFile:DefaultsURL.path]) == nil) {
         // Initialize the structure if it doesn't exist
         defaults = [[PKDefaults alloc]init];
+        defaults.keyboardMaps = [[NSMutableDictionary alloc]init];
+        for (NSString *key in [PKDefaults keyBoardKeyList]) {
+            [defaults.keyboardMaps setObject:@"None" forKey:key];
+        }
     }
 }
 
++ (BOOL)saveDefaults
+{
+    // Save IDs to file
+    return [NSKeyedArchiver archiveRootObject:defaults toFile:DefaultsURL.path];
+}
+
 + (void)setModifer:(NSString*)modifier forKey:(NSString*)key{
-    
+    if(modifier != nil) {
+        [defaults.keyboardMaps setObject:modifier forKey:key];
+    }
 }
 
 + (NSMutableArray*)keyboardModifierList{
     return [NSMutableArray arrayWithObjects:@"None", @"Ctrl", @"Meta", @"Esc", nil];
+}
+
++ (NSMutableArray*)keyBoardKeyList{
+    return [NSMutableArray arrayWithObjects:@"⌃ Ctrl", @"⌘ Cmd", @"⌥ Alt", @"⇪ CapsLock", nil];
+}
+
++ (NSMutableDictionary*)keyBoardMapping{
+    return defaults.keyboardMaps;
 }
 
 @end

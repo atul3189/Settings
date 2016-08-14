@@ -11,7 +11,7 @@
 NSMutableArray *Hosts;
 
 static NSURL *DocumentsDirectory = nil;
-static NSURL *KeysURL = nil;
+static NSURL *HostsURL = nil;
 
 @implementation PKHosts
 
@@ -88,7 +88,7 @@ static NSURL *KeysURL = nil;
 + (BOOL)saveHosts
 {
     // Save IDs to file
-    return [NSKeyedArchiver archiveRootObject:Hosts toFile:KeysURL.path];
+    return [NSKeyedArchiver archiveRootObject:Hosts toFile:HostsURL.path];
 }
 
 + (instancetype)saveHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(enum PKPrediction)prediction
@@ -120,11 +120,11 @@ static NSURL *KeysURL = nil;
     if (DocumentsDirectory == nil) {
         //Hosts = [[NSMutableArray alloc] init];
         DocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-        KeysURL = [DocumentsDirectory URLByAppendingPathComponent:@"hosts"];
+        HostsURL = [DocumentsDirectory URLByAppendingPathComponent:@"hosts"];
     }
     
     // Load IDs from file
-    if ((Hosts = [NSKeyedUnarchiver unarchiveObjectWithFile:KeysURL.path]) == nil) {
+    if ((Hosts = [NSKeyedUnarchiver unarchiveObjectWithFile:HostsURL.path]) == nil) {
         // Initialize the structure if it doesn't exist
         Hosts = [[NSMutableArray alloc] init];
     }

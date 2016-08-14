@@ -11,6 +11,6 @@
 @interface PKKeyboardModifierViewController : UITableViewController
 
 - (void)performInitialSelection:(NSString *)selectedPrediction;
-- (id)selectedObject;
+- (NSString*)selectedObject;
 
 @end

@@ -28,4 +28,6 @@ enum PKKeyBoardModifiers{
 + (BOOL)saveDefaults;
 + (void)setModifer:(NSString*)modifier forKey:(NSString*)key;
 + (NSMutableArray*)keyboardModifierList;
++ (NSMutableArray*)keyBoardKeyList;
++ (NSMutableDictionary*)keyBoardMapping;
 @end

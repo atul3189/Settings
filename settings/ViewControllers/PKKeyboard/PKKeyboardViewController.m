@@ -8,6 +8,7 @@
 
 #import "PKKeyboardViewController.h"
 #import "PKKeyboardModifierViewController.h"
+#import "PKDefaults.h"
 
 #define KEY_LABEL_TAG 1001
 #define VALUE_LABEL_TAG 1002
@@ -16,7 +17,7 @@
 
 @property (nonatomic, strong) NSIndexPath* currentSelectionIdx;
 @property (nonatomic, strong) NSMutableArray *keyList;
-@property (nonatomic, strong) NSMutableArray *modifierList;
+@property (nonatomic, strong) NSMutableDictionary *keyboardMapping;
 
 @end
 
@@ -24,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self loadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -35,6 +36,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSString*)selectedObject
+{
+    return _keyList[_currentSelectionIdx.row];
+}
+
+- (void)loadData{
+    _keyList = [PKDefaults keyBoardKeyList];
+    _keyboardMapping = [PKDefaults keyBoardMapping];
 }
 
 # pragma mark - UICollection View Delegates
@@ -53,9 +64,10 @@
     UILabel *keyLabel = [cell viewWithTag:KEY_LABEL_TAG];
     keyLabel.text = [_keyList objectAtIndex:indexPath.row];
     
+    UILabel *valueLabel = [cell viewWithTag:VALUE_LABEL_TAG];
+    valueLabel.text = [_keyboardMapping objectForKey:keyLabel.text];
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     _currentSelectionIdx = indexPath;
@@ -63,7 +75,14 @@
 
 - (IBAction)unwindFromKeyboardModifier:(UIStoryboardSegue *)sender{
     PKKeyboardModifierViewController *modifier = sender.sourceViewController;
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:_currentSelectionIdx];
     
+    UILabel *valueLabel = [cell viewWithTag:VALUE_LABEL_TAG];
+    valueLabel.text = [modifier selectedObject];
+    
+    [_keyboardMapping setObject:valueLabel.text forKey:[self selectedObject]];
+    [PKDefaults setModifer:valueLabel.text forKey:[self selectedObject]];
+    [PKDefaults saveDefaults];
 }
 
 @end
