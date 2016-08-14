@@ -15,6 +15,15 @@ static NSURL *FontsURL = nil;
 
 @implementation PKFont
 
+- (instancetype)initWithName:(NSString*)fontName andFilePath:(NSString*)filePath{
+    self = [super init];
+    if(self){
+        self.name = fontName;
+        self.filepath = filePath;
+    }
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)coder
 {
     _name = [coder decodeObjectForKey:@"name"];
@@ -42,7 +51,6 @@ static NSURL *FontsURL = nil;
     }
     return nil;
 }
-
 + (NSMutableArray *)all
 {
     return Fonts;
@@ -51,6 +59,23 @@ static NSURL *FontsURL = nil;
 + (NSInteger)count
 {
     return [Fonts count];
+}
+
++ (instancetype)saveFont:(NSString *)fontName withFilePath:(NSString *)filePath{
+    PKFont *font = [PKFont withFont:fontName];
+    if (!font) {
+        font = [[PKFont alloc] initWithName:fontName andFilePath:filePath];
+        [Fonts addObject:font];
+    } else {
+        font->_name = fontName;
+        font->_filepath = filePath;
+    }
+    
+    if (![PKFont saveFonts]) {
+        // This should never fail, but it is kept for testing purposes.
+        return nil;
+    }
+    return font;
 }
 
 + (BOOL)saveFonts

@@ -9,6 +9,9 @@
 #import "PKThemeCreateViewController.h"
 
 @interface PKThemeCreateViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *importButton;
+@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @end
 

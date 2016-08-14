@@ -102,13 +102,12 @@
     }
 
     if (errorMsg) {
-      UIAlertView *errorAlert = [[UIAlertView alloc]
-            initWithTitle:@"Key error"
-                  message:errorMsg
-                 delegate:nil
-        cancelButtonTitle:@"OK"
-        otherButtonTitles:nil];
-      [errorAlert show];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Key error" message:errorMsg preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
+        
       return NO;
     }
   }

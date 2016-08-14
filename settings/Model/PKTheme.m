@@ -15,6 +15,15 @@ static NSURL *ThemesURL = nil;
 
 @implementation PKTheme
 
+- (instancetype)initWithName:(NSString*)themeName andFilePath:(NSString*)filePath{
+    self = [super init];
+    if(self){
+        self.name = themeName;
+        self.filepath = filePath;
+    }
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)coder
 {
     _name = [coder decodeObjectForKey:@"name"];
@@ -53,10 +62,27 @@ static NSURL *ThemesURL = nil;
     return [Themes count];
 }
 
-+ (BOOL)saveHosts
++ (BOOL)saveThemes
 {
     // Save IDs to file
     return [NSKeyedArchiver archiveRootObject:Themes toFile:ThemesURL.path];
+}
++ (instancetype)saveTheme:(NSString *)themeName withFilePath:(NSString *)filePath
+{
+    PKTheme *theme = [PKTheme withTheme:themeName];
+    if (!theme) {
+        theme = [[PKTheme alloc] initWithName:themeName andFilePath:filePath];
+        [Themes addObject:theme];
+    } else {
+        theme->_name = themeName;
+        theme->_filepath = filePath;
+    }
+    
+    if (![PKTheme saveThemes]) {
+        // This should never fail, but it is kept for testing purposes.
+        return nil;
+    }
+    return theme;
 }
 
 + (void)loadThemes

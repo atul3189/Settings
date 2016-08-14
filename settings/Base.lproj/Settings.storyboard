@@ -999,7 +999,7 @@
         <!--Add a new theme-->
         <scene sceneID="EMy-fs-l8I">
             <objects>
-                <tableViewController id="lav-FK-npF" sceneMemberID="viewController">
+                <tableViewController id="lav-FK-npF" customClass="PKThemeCreateViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="rJ7-WJ-BVJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1078,7 +1078,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOA-o9-poV">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOA-o9-poV">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                                     <state key="normal" title="Import"/>
                                                     <connections>
@@ -1103,6 +1103,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add a new theme" id="qnm-Qc-xaL"/>
+                    <connections>
+                        <outlet property="importButton" destination="gOA-o9-poV" id="usK-NW-nun"/>
+                        <outlet property="nameTextField" destination="c4a-eE-Iap" id="bra-OB-z6a"/>
+                        <outlet property="urlTextField" destination="gYp-oT-cuB" id="lrW-nz-0VX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWw-V7-ISO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1292,7 +1297,7 @@
         <!--Add a new font-->
         <scene sceneID="JUW-H8-yiS">
             <objects>
-                <tableViewController id="KGQ-4q-oYw" sceneMemberID="viewController">
+                <tableViewController id="KGQ-4q-oYw" customClass="PKFontCreateViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="O9K-gx-gMb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1319,12 +1324,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Is-Nw-Bcb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Hg-w4-G8l">
+                                                    <rect key="frame" x="10" y="0.5" width="600" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1344,7 +1348,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="editChanged:" destination="5uY-Gf-3fe" eventType="editingChanged" id="6ci-GJ-5Tf"/>
+                                                        <action selector="urlTextDidChange:" destination="KGQ-4q-oYw" eventType="editingChanged" id="lfY-Tn-1xG"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -1363,7 +1367,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4V-pb-aQj">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4V-pb-aQj">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                                     <state key="normal" title="Import"/>
                                                     <connections>
@@ -1388,6 +1392,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add a new font" id="4Fu-Dn-ReF"/>
+                    <connections>
+                        <outlet property="importButton" destination="A4V-pb-aQj" id="4ck-Sr-WR4"/>
+                        <outlet property="nameTextField" destination="4Hg-w4-G8l" id="EgW-Eb-Hjk"/>
+                        <outlet property="urlTextField" destination="DcL-Sx-nU8" id="bd0-Qg-rBE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceR-3O-eS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
