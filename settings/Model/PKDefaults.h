@@ -27,6 +27,12 @@ enum PKKeyBoardModifiers{
 + (void)initialize;
 + (BOOL)saveDefaults;
 + (void)setModifer:(NSString*)modifier forKey:(NSString*)key;
++ (void)setFontName:(NSString*)fontName;
++ (void)setThemeName:(NSString*)themeName;
++ (void)setFontSize:(NSNumber*)fontSize;
++ (NSString*)selectedFontName;
++ (NSString*)selectedThemeName;
++ (NSNumber*)selectedFontSize;
 + (NSMutableArray*)keyboardModifierList;
 + (NSMutableArray*)keyBoardKeyList;
 + (NSMutableDictionary*)keyBoardMapping;

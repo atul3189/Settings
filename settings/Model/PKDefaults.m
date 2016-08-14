@@ -71,6 +71,29 @@ PKDefaults *defaults;
     }
 }
 
++ (void)setFontName:(NSString*)fontName{
+    defaults.fontName = fontName;
+}
+
++ (void)setThemeName:(NSString*)themeName{
+    defaults.themeName = themeName;
+}
+
++ (void)setFontSize:(NSNumber*)fontSize{
+    defaults.fontSize = fontSize;
+}
+
++ (NSString*)selectedFontName{
+    return defaults.fontName;
+}
++ (NSString*)selectedThemeName{
+    return defaults.themeName;
+}
++ (NSNumber*)selectedFontSize{
+    return defaults.fontSize;
+}
+
+
 + (NSMutableArray*)keyboardModifierList{
     return [NSMutableArray arrayWithObjects:@"None", @"Ctrl", @"Meta", @"Esc", nil];
 }

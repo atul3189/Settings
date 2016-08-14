@@ -14,6 +14,9 @@
 
 @interface PKAppearanceViewController ()
 
+@property (nonatomic, strong) NSIndexPath *selectedFontIndexPath;
+@property (nonatomic, strong) NSIndexPath *selectedThemeIndexPath;
+
 @end
 
 @implementation PKAppearanceViewController
@@ -83,10 +86,14 @@
     if(indexPath.section == 0){
         if(indexPath.row == [[PKTheme all]count]){
             [self performSegueWithIdentifier:@"addTheme" sender:self];
+        } else {
+            
         }
     } else if (indexPath.section == 1){
         if(indexPath.row == [[PKFont all]count]){
             [self performSegueWithIdentifier:@"addFont" sender:self];
+        } else {
+            
         }
     }
     
