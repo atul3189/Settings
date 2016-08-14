@@ -58,6 +58,10 @@
     return _keyList.count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"MODIFIER MAPPINGS";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"keyMapperCell" forIndexPath:indexPath];
     
@@ -69,8 +73,18 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     _currentSelectionIdx = indexPath;
+    return indexPath;
+}
+
+# pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"keyboardModifier"]){
+        PKKeyboardModifierViewController *modifier = segue.destinationViewController;
+        [modifier performInitialSelection:[_keyboardMapping objectForKey:[self selectedObject]]];
+    }
 }
 
 - (IBAction)unwindFromKeyboardModifier:(UIStoryboardSegue *)sender{

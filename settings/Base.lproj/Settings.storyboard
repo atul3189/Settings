@@ -935,7 +935,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="iKT-vN-5kg" kind="show" identifier="ctrlKeyboard" id="5oY-gT-X4g"/>
+                                    <segue destination="iKT-vN-5kg" kind="show" identifier="keyboardModifier" id="5oY-gT-X4g"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
