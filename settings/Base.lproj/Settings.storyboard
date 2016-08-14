@@ -1027,19 +1027,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-eE-Iap">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="editChanged:" destination="5uY-Gf-3fe" eventType="editingChanged" id="NrY-fB-hVU"/>
+                                                        <action selector="nameFieldDidChange:" destination="lav-FK-npF" eventType="editingChanged" id="dTm-PR-Tp3"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="c4a-eE-Iap" firstAttribute="leading" secondItem="9aK-4H-3X5" secondAttribute="leading" id="BYO-JY-mDR"/>
+                                                <constraint firstItem="c4a-eE-Iap" firstAttribute="leading" secondItem="9aK-4H-3X5" secondAttribute="leading" constant="8" id="BYO-JY-mDR"/>
                                                 <constraint firstItem="c4a-eE-Iap" firstAttribute="top" secondItem="9aK-4H-3X5" secondAttribute="top" id="c91-Zz-zVV"/>
                                                 <constraint firstAttribute="bottom" secondItem="c4a-eE-Iap" secondAttribute="bottom" id="lB7-tW-ufA"/>
-                                                <constraint firstAttribute="trailing" secondItem="c4a-eE-Iap" secondAttribute="trailing" id="tf4-v3-TII"/>
+                                                <constraint firstAttribute="trailing" secondItem="c4a-eE-Iap" secondAttribute="trailing" constant="8" id="tf4-v3-TII"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1060,6 +1060,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="editChanged:" destination="5uY-Gf-3fe" eventType="editingChanged" id="XEC-b4-bSa"/>
+                                                        <action selector="urlTextDidChange:" destination="lav-FK-npF" eventType="editingChanged" id="UfD-Py-TJF"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -1082,7 +1083,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                                     <state key="normal" title="Import"/>
                                                     <connections>
-                                                        <action selector="copyPublicKey:" destination="pXM-Xm-FZf" eventType="touchUpInside" id="h0q-v5-keF"/>
+                                                        <action selector="importButtonClicked:" destination="lav-FK-npF" eventType="touchUpInside" id="XjM-S2-2wl"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1371,7 +1372,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                                     <state key="normal" title="Import"/>
                                                     <connections>
-                                                        <action selector="copyPublicKey:" destination="pXM-Xm-FZf" eventType="touchUpInside" id="s2e-yl-JDq"/>
+                                                        <action selector="importButtonClicked:" destination="KGQ-4q-oYw" eventType="touchUpInside" id="RpM-N0-WOI"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

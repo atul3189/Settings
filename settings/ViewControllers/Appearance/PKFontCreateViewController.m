@@ -47,8 +47,22 @@
 
 - (IBAction)importButtonClicked:(id)sender{
     [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSString *filePath, NSError *error) {
-        
+        if(error == nil){
+            [self downloadCompletedWithFilePath:filePath];
+        } else {
+            //Show alert
+        }
     }];
+}
+
+- (void)downloadCompletedWithFilePath:(NSString*)filePath{
+    self.importButton.enabled = NO;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(didTapOnSave:)];
+    [self.navigationItem setRightBarButtonItem:barButton];
+}
+
+- (IBAction)didTapOnSave:(id)sender{
+    
 }
 
 @end
