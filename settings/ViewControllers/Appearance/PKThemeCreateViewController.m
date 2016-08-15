@@ -89,7 +89,7 @@
     } else {        
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *folderPath = [NSString stringWithFormat:@"%@/Themes/",documentsDirectory];
+        NSString *folderPath = [NSString stringWithFormat:@"%@/ThemesDir/",documentsDirectory];
         NSString *filePath = [NSString stringWithFormat:@"%@/%@", folderPath,self.nameTextField.text];
         [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
         NSError *error;

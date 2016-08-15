@@ -9,13 +9,14 @@
 #import "PKAppearanceViewController.h"
 #import "PKTheme.h"
 #import "PKFont.h"
-
+#import "PKDefaults.h"
 #define FONT_SIZE_FIELD_TAG 2001
 
 @interface PKAppearanceViewController ()
 
 @property (nonatomic, strong) NSIndexPath *selectedFontIndexPath;
 @property (nonatomic, strong) NSIndexPath *selectedThemeIndexPath;
+@property (weak, nonatomic) UITextField *fontSizeField;
 
 @end
 
@@ -28,6 +29,22 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self saveDefaultValues];
+}
+
+- (void)saveDefaultValues{
+    [PKDefaults setFontSize:[NSNumber numberWithInt:_fontSizeField.text.intValue]];
+    if(_selectedFontIndexPath != nil){
+        [PKDefaults setFontName:[[[PKFont all]objectAtIndex:_selectedFontIndexPath.row]name]];
+    }
+    if(_selectedThemeIndexPath != nil){
+        [PKDefaults setThemeName:[[[PKTheme all]objectAtIndex:_selectedThemeIndexPath.row]name]];
+    }
+    [PKDefaults saveDefaults];
 }
 
 #pragma mark - Table view data source
@@ -51,6 +68,11 @@
         cell.textLabel.text = @"Add a new font";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
+        if (_selectedFontIndexPath == indexPath) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        } else {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
         cell.textLabel.text = [[[PKFont all]objectAtIndex:indexPath.row]name];
     }
 }
@@ -60,6 +82,11 @@
         cell.textLabel.text = @"Add a new theme";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
+        if (_selectedThemeIndexPath == indexPath) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        } else {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
         cell.textLabel.text = [[[PKTheme all]objectAtIndex:indexPath.row]name];
     }
 }
@@ -75,8 +102,12 @@
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fontSizeCell" forIndexPath:indexPath];
-        UITextField *fontSizeField = [cell viewWithTag:FONT_SIZE_FIELD_TAG];
-        fontSizeField.text = @"10px";
+        _fontSizeField = [cell viewWithTag:FONT_SIZE_FIELD_TAG];
+        if([PKDefaults selectedFontSize] != nil){
+            _fontSizeField.text = [NSString stringWithFormat:@"%@",[PKDefaults selectedFontSize]];
+        } else {
+            _fontSizeField.placeholder = @"10 px";
+        }
         return cell;
     }
     // Configure the cell...
@@ -87,32 +118,40 @@
         if(indexPath.row == [[PKTheme all]count]){
             [self performSegueWithIdentifier:@"addTheme" sender:self];
         } else {
-            
+            if (_selectedThemeIndexPath != nil) {
+                // When in selectable mode, do not show details.
+                [[tableView cellForRowAtIndexPath:_selectedThemeIndexPath] setAccessoryType:UITableViewCellAccessoryNone];
+            }
+            _selectedThemeIndexPath = indexPath;
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
         }
     } else if (indexPath.section == 1){
         if(indexPath.row == [[PKFont all]count]){
             [self performSegueWithIdentifier:@"addFont" sender:self];
         } else {
-            
+            if (_selectedFontIndexPath != nil) {
+                // When in selectable mode, do not show details.
+                [[tableView cellForRowAtIndexPath:_selectedFontIndexPath] setAccessoryType:UITableViewCellAccessoryNone];
+            }
+            _selectedFontIndexPath = indexPath;
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
         }
     }
-    
 }
 
 - (IBAction)unwindFromAddFont:(UIStoryboardSegue *)sender{
-    NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKFont.count - 1) inSection:1];
-    if([[PKFont all]count] > newIdx.row){
-        [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
-    }
+    NSRange range = NSMakeRange(1, 1);
+    NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
+    [self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 - (IBAction)unwindFromAddTheme:(UIStoryboardSegue *)sender{
-    NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKTheme.count - 1) inSection:0];
-    if([[PKTheme all]count] > newIdx.row){
-        [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
-    }
+    NSRange range = NSMakeRange(0, 1);
+    NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
+    [self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationBottom];
 }
-
 
 /*
 // Override to support conditional editing of the table view.
