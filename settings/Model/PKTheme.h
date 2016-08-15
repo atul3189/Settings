@@ -17,6 +17,7 @@
 + (instancetype)withTheme:(NSString *)themeName;
 + (BOOL)saveThemes;
 + (instancetype)saveTheme:(NSString*)themeName withFilePath:(NSString*)filePath;
++ (void)removeThemeAtIndex:(int)index;
 + (NSMutableArray *)all;
 + (NSInteger)count;
 

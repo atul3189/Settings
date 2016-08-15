@@ -174,25 +174,31 @@
     }
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if((indexPath.section == 0 && indexPath.row < [PKTheme count]) || (indexPath.section == 1 && indexPath.row < [PKFont count])){
+        return YES;
+    } else {
+        return NO;
+    }
+    
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        if(indexPath.section == 0){
+            [PKTheme removeThemeAtIndex:(int)indexPath.row];
+        } else if (indexPath.section == 1){
+            [PKFont removeFontAtIndex:(int)indexPath.row];
+        }
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
 /*
 // Override to support rearranging the table view.

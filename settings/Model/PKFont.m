@@ -78,6 +78,10 @@ static NSURL *FontsURL = nil;
     return font;
 }
 
++ (void)removeFontAtIndex:(int)index{
+    [Fonts removeObjectAtIndex:index];
+}
+
 + (BOOL)saveFonts
 {
     // Save IDs to file

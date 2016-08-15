@@ -85,6 +85,10 @@ static NSURL *ThemesURL = nil;
     return theme;
 }
 
++ (void)removeThemeAtIndex:(int)index{
+    [Themes removeObjectAtIndex:index];
+}
+
 + (void)loadThemes
 {
     if (DocumentsDirectory == nil) {

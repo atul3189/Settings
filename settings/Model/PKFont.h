@@ -17,6 +17,7 @@
 + (instancetype)withFont:(NSString *)fontName;
 + (BOOL)saveFonts;
 + (instancetype)saveFont:(NSString*)fontName withFilePath:(NSString*)filePath;
++ (void)removeFontAtIndex:(int)index;
 + (NSMutableArray *)all;
 + (NSInteger)count;
 
