@@ -23,6 +23,7 @@
 @implementation PKAppearanceViewController
 
 - (void)viewDidLoad {
+    [self loadDefaultValues];
     [super viewDidLoad];
 }
 
@@ -34,6 +35,23 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self saveDefaultValues];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+- (void)loadDefaultValues{
+    NSString *selectedThemeName = [PKDefaults selectedThemeName];
+    PKTheme *selectedTheme = [PKTheme withTheme:selectedThemeName];
+    if(selectedTheme != nil) {
+        _selectedThemeIndexPath = [NSIndexPath indexPathForRow:[[PKTheme all]indexOfObject:selectedTheme] inSection:0];
+    }
+    NSString *selectedFontName = [PKDefaults selectedFontName];
+    PKFont *selectedFont = [PKFont withFont:selectedFontName];
+    if(selectedFont != nil) {
+        _selectedFontIndexPath = [NSIndexPath indexPathForRow:[[PKFont all]indexOfObject:selectedFont] inSection:1];
+    }
 }
 
 - (void)saveDefaultValues{
@@ -142,15 +160,18 @@
 }
 
 - (IBAction)unwindFromAddFont:(UIStoryboardSegue *)sender{
-    NSRange range = NSMakeRange(1, 1);
-    NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
-    [self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationBottom];
+    int lastIndex = (int)[PKFont count];
+    if (![self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:1]]) {
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:lastIndex-1 inSection:1]] withRowAnimation:UITableViewRowAnimationBottom];
+    }
+    
 }
 
 - (IBAction)unwindFromAddTheme:(UIStoryboardSegue *)sender{
-    NSRange range = NSMakeRange(0, 1);
-    NSIndexSet *section = [NSIndexSet indexSetWithIndexesInRange:range];
-    [self.tableView reloadSections:section withRowAnimation:UITableViewRowAnimationBottom];
+    int lastIndex = (int)[PKTheme count];
+    if (![self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:lastIndex inSection:0]]) {
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:lastIndex-1 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
+    }
 }
 
 /*
