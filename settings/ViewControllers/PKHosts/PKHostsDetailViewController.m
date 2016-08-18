@@ -96,7 +96,8 @@
 {
     NSString *errorMsg;
     if ([identifier isEqualToString:@"unwindFromCreate"]) {
-        if ([PKHosts withHost:_hostField.text]) {
+        //An existing host with same name should not exist, but while editing an existing Host, it should not show error
+        if ([PKHosts withHost:_hostField.text] && ![self.hostField.text isEqualToString:_hostField.text]) {
             errorMsg = @"Cannot have two hosts with the same name.";
         } else if ([_hostField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
             errorMsg = @"Spaces are not permitted in the host.";

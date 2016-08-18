@@ -194,6 +194,7 @@
     NSInteger pos;
     if (selectionID.length) {
       pos = [PKCard.all indexOfObject:[PKCard withID:selectionID]];
+        pos+=1; //To accomodate "None" value
     } else {
       pos = 0;
     }

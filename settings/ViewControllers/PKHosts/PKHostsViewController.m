@@ -58,8 +58,10 @@
 
 - (IBAction)unwindFromCreate:(UIStoryboardSegue *)sender
 {
-    NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKHosts.count - 1) inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
+    //TODO: Replace
+    [self.tableView reloadData];
+//    NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKHosts.count - 1) inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
