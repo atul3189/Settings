@@ -172,7 +172,12 @@
 
 - (IBAction)unwindFromCreate:(UIStoryboardSegue *)sender
 {
-  NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKCard.count - 1) inSection:0];
+    NSIndexPath *newIdx;
+    if(_selectable){
+        newIdx = [NSIndexPath indexPathForRow:PKCard.count inSection:0];
+    } else {
+       newIdx = [NSIndexPath indexPathForRow:(PKCard.count - 1) inSection:0];
+    }
   [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
 }
 
