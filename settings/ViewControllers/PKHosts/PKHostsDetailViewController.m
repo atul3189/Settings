@@ -46,6 +46,11 @@
         _startUpCmdField.text = _pkHost.moshStartup;
         
     }
+    
+    [self.hostKeyDetail addObserver:self forKeyPath:@"text" options:0 context:nil];
+    [self.predictionDetail addObserver:self forKeyPath:@"text" options:0 context:nil];
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -128,6 +133,12 @@
 
 #pragma mark - Text field validations
 
+- (void)dealloc{
+    [self.hostKeyDetail removeObserver:self forKeyPath:@"text"];
+    [self.predictionDetail removeObserver:self forKeyPath:@"text"];
+
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (textField == _hostField || textField == _hostNameField || textField == _userField) {
@@ -144,6 +155,14 @@
         self.saveButton.enabled = YES;
     } else {
         self.saveButton.enabled = NO;
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    if(object == _hostKeyDetail || object == _predictionDetail){
+        if([keyPath isEqualToString:@"text"]){
+            [self textFieldDidChange:nil];
+        }
     }
 }
 
