@@ -58,10 +58,13 @@
 
 - (IBAction)unwindFromCreate:(UIStoryboardSegue *)sender
 {
-    //TODO: Replace
-    [self.tableView reloadData];
-//    NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKHosts.count - 1) inSection:0];
-//    [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
+    PKHostsDetailViewController *details = sender.sourceViewController;
+    if(!details.isExistingHost){
+        NSIndexPath *newIdx = [NSIndexPath indexPathForRow:(PKHosts.count - 1) inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[ newIdx ] withRowAnimation:UITableViewRowAnimationBottom];
+    } else {
+        [self.tableView reloadRowsAtIndexPaths:@[[[self tableView] indexPathForSelectedRow]] withRowAnimation:UITableViewRowAnimationBottom];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -71,6 +74,7 @@
     if ([[segue identifier] isEqualToString:@"newHost"]) {
         PKHostsDetailViewController *details = segue.destinationViewController;        
         NSIndexPath *indexPath = [[self tableView] indexPathForSelectedRow];
+        details.isExistingHost = YES;
         PKHosts *pkHost = [PKHosts.all objectAtIndex:indexPath.row];
         details.pkHost = pkHost;
         return;

@@ -31,7 +31,7 @@ enum PKPrediction{
 + (void)initialize;
 + (instancetype)withHost:(NSString *)ID;
 + (BOOL)saveHosts;
-+ (instancetype)saveHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(enum PKPrediction)prediction;
++ (instancetype)saveHost:(NSString*)host withNewHost:(NSString*)newHost hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(enum PKPrediction)prediction;
 + (NSMutableArray *)all;
 + (NSInteger)count;
 + (NSString*)predictionStringForRawValue:(int)rawValue;

@@ -91,14 +91,14 @@ static NSURL *HostsURL = nil;
     return [NSKeyedArchiver archiveRootObject:Hosts toFile:HostsURL.path];
 }
 
-+ (instancetype)saveHost:(NSString*)host hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(enum PKPrediction)prediction
++ (instancetype)saveHost:(NSString*)host  withNewHost:(NSString*)newHost hostName:(NSString*)hostName sshPort:(NSString*)sshPort user:(NSString*)user password:(NSString*)password hostKey:(NSString*)hostKey moshPort:(NSString*)moshPort startUpCmd:(NSString*)startUpCmd prediction:(enum PKPrediction)prediction
 {
     PKHosts *pkHost = [PKHosts withHost:host];
     if(!pkHost){
-        pkHost = [[PKHosts alloc]initWithHost:host hostName:hostName sshPort:sshPort user:user password:password hostKey:hostKey moshPort:moshPort startUpCmd:startUpCmd prediction:prediction];
+        pkHost = [[PKHosts alloc]initWithHost:newHost hostName:hostName sshPort:sshPort user:user password:password hostKey:hostKey moshPort:moshPort startUpCmd:startUpCmd prediction:prediction];
         [Hosts addObject:pkHost];
     } else {
-        pkHost.host = host;
+        pkHost.host = newHost;
         pkHost.hostName = hostName;
         pkHost.port = [NSNumber numberWithInt:sshPort.intValue];
         pkHost.user = user;

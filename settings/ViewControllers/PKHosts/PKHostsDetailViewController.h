@@ -11,4 +11,5 @@
 @interface PKHostsDetailViewController : UITableViewController
 
 @property (weak, nonatomic) PKHosts *pkHost;
+@property (assign, nonatomic) BOOL isExistingHost;
 @end

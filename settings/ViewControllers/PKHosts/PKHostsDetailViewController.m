@@ -97,7 +97,7 @@
     NSString *errorMsg;
     if ([identifier isEqualToString:@"unwindFromCreate"]) {
         //An existing host with same name should not exist, but while editing an existing Host, it should not show error
-        if ([PKHosts withHost:_hostField.text] && ![self.hostField.text isEqualToString:_hostField.text]) {
+        if ([PKHosts withHost:_hostField.text] && !_isExistingHost) {
             errorMsg = @"Cannot have two hosts with the same name.";
         } else if ([_hostField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
             errorMsg = @"Spaces are not permitted in the host.";
@@ -106,7 +106,7 @@
         } else if ([_userField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
             errorMsg = @"Spaces are not permitted in the User.";
         } else {
-            _pkHost = [PKHosts saveHost:_hostField.text hostName:_hostNameField.text sshPort:_sshPortField.text user:_userField.text password:_passwordField.text hostKey:_hostKeyDetail.text moshPort:_moshPortField.text startUpCmd:_startUpCmdField.text prediction:[PKHosts predictionValueForString:_predictionDetail.text]];
+            _pkHost = [PKHosts saveHost:self.pkHost.host withNewHost:_hostField.text hostName:_hostNameField.text sshPort:_sshPortField.text user:_userField.text password:_passwordField.text hostKey:_hostKeyDetail.text moshPort:_moshPortField.text startUpCmd:_startUpCmdField.text prediction:[PKHosts predictionValueForString:_predictionDetail.text]];
             if (!_pkHost) {
                 errorMsg = @"Could not create new host.";
             }
