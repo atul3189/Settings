@@ -88,7 +88,11 @@
 {
   PKCardViewController * controller = sender.sourceViewController;
   PKCard *pk = [controller selectedObject];
-  self.hostKeyDetail.text = pk.ID;
+    if(pk == nil){
+        self.hostKeyDetail.text = @"None";
+    } else {
+        self.hostKeyDetail.text = pk.ID;
+    }
 }
 
 - (IBAction)unwindFromPrediction:(UIStoryboardSegue *)sender

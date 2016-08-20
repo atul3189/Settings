@@ -198,8 +198,12 @@
     // Guess the indexPath
     NSInteger pos;
     if (selectionID.length) {
-      pos = [PKCard.all indexOfObject:[PKCard withID:selectionID]];
-        pos+=1; //To accomodate "None" value
+        if([PKCard withID:selectionID]){
+            pos = [PKCard.all indexOfObject:[PKCard withID:selectionID]];
+            pos+=1; //To accomodate "None" value
+        } else {
+            pos = 0;
+        }
     } else {
       pos = 0;
     }
