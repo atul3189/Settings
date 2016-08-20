@@ -141,7 +141,10 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == _hostField || textField == _hostNameField || textField == _userField) {
+    if(textField == _sshPortField || textField == _moshPortField){
+        NSCharacterSet *nonNumberSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+        return ([string stringByTrimmingCharactersInSet:nonNumberSet].length > 0) || [string isEqualToString:@""];
+    } else if (textField == _hostField || textField == _hostNameField || textField == _userField) {
         if ([string isEqualToString:@" "]) {
             return NO;
         }

@@ -457,7 +457,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pRc-bu-Q6U">
                                                     <rect key="frame" x="113" y="7" width="479" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="B0L-YN-Jg0" eventType="editingChanged" id="Ide-xf-NXX"/>
                                                         <outlet property="delegate" destination="B0L-YN-Jg0" id="XrQ-Y8-l0u"/>
@@ -492,7 +492,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zom-aU-Zr0">
                                                     <rect key="frame" x="113" y="7" width="479" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="URL"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="B0L-YN-Jg0" eventType="editingChanged" id="jtc-Ei-P4N"/>
                                                         <outlet property="delegate" destination="B0L-YN-Jg0" id="Rei-TG-ajK"/>
@@ -523,9 +523,10 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="22" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXP-Ax-bOc">
                                                     <rect key="frame" x="113" y="7" width="479" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="B0L-YN-Jg0" eventType="editingChanged" id="YgD-4m-LY7"/>
+                                                        <outlet property="delegate" destination="B0L-YN-Jg0" id="AVM-zB-AQv"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -553,7 +554,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NgU-eL-Ayw">
                                                     <rect key="frame" x="113" y="7" width="479" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="B0L-YN-Jg0" eventType="editingChanged" id="zs7-Ld-Pkj"/>
                                                         <outlet property="delegate" destination="B0L-YN-Jg0" id="3mN-wX-pHL"/>
@@ -584,7 +585,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ask Every Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XA2-j1-yfV">
                                                     <rect key="frame" x="113" y="7" width="479" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="B0L-YN-Jg0" eventType="editingChanged" id="LAp-rv-g0N"/>
                                                     </connections>
@@ -645,9 +646,10 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5He-rQ-CdM">
                                                     <rect key="frame" x="113" y="7" width="479" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="B0L-YN-Jg0" eventType="editingChanged" id="GeO-ls-ejT"/>
+                                                        <outlet property="delegate" destination="B0L-YN-Jg0" id="dQF-Sn-Ie5"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -665,21 +667,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Startup Command" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBw-jJ-6Uq">
-                                                    <rect key="frame" x="15" y="0.5" width="147" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="249" text="Startup Command" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBw-jJ-6Uq">
+                                                    <rect key="frame" x="15" y="12" width="136" height="19.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="136" id="uNJ-Ci-hHz"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXI-j0-XM4">
-                                                    <rect key="frame" x="170" y="7" width="422" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXI-j0-XM4">
+                                                    <rect key="frame" x="170" y="12" width="415" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="B0L-YN-Jg0" eventType="editingChanged" id="p3r-0N-zNd"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mXI-j0-XM4" firstAttribute="centerY" secondItem="ls1-Me-PAF" secondAttribute="centerY" id="XqF-qe-d1D"/>
+                                                <constraint firstItem="MBw-jJ-6Uq" firstAttribute="centerY" secondItem="ls1-Me-PAF" secondAttribute="centerY" id="c2D-UB-Vc4"/>
+                                                <constraint firstItem="mXI-j0-XM4" firstAttribute="leading" secondItem="MBw-jJ-6Uq" secondAttribute="trailing" constant="19" id="q2Y-ja-SeJ"/>
+                                                <constraint firstItem="MBw-jJ-6Uq" firstAttribute="leading" secondItem="ls1-Me-PAF" secondAttribute="leadingMargin" id="uIr-Fp-kJR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mXI-j0-XM4" secondAttribute="trailing" id="zUV-1j-bnu"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Od0-4m-MMl" detailTextLabel="12a-eq-qbY" style="IBUITableViewCellStyleValue1" id="WQZ-Ty-rT1">
