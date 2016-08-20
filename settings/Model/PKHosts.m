@@ -49,11 +49,15 @@ static NSURL *HostsURL = nil;
     if(self){
         _host = host;
         _hostName = hostName;
-        _port = [NSNumber numberWithInt:sshPort.intValue];
+        if (![sshPort isEqualToString:@""]) {
+            _port = [NSNumber numberWithInt:sshPort.intValue];
+        }
         _user = user;
         _password = password;
         _key = hostKey;
-        _moshPort = [NSNumber numberWithInt:moshPort.intValue];
+        if(![moshPort isEqualToString:@""]){
+            _moshPort = [NSNumber numberWithInt:moshPort.intValue];
+        }
         _moshStartup = startUpCmd;
         _prediction = [NSNumber numberWithInt:prediction];
     }
@@ -100,11 +104,15 @@ static NSURL *HostsURL = nil;
     } else {
         pkHost.host = newHost;
         pkHost.hostName = hostName;
-        pkHost.port = [NSNumber numberWithInt:sshPort.intValue];
+        if(![sshPort isEqualToString:@""]){
+            pkHost.port = [NSNumber numberWithInt:sshPort.intValue];
+        }
         pkHost.user = user;
         pkHost.password = password;
         pkHost.key = hostKey;
-        pkHost.moshPort = [NSNumber numberWithInt:moshPort.intValue];
+        if(![moshPort isEqualToString:@""]){
+            pkHost.moshPort = [NSNumber numberWithInt:moshPort.intValue];
+        }
         pkHost.moshStartup = startUpCmd;
         pkHost.prediction = [NSNumber numberWithInt:prediction];
     }

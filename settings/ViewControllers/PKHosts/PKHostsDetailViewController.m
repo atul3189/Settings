@@ -37,12 +37,16 @@
     if(_pkHost != nil){
         _hostField.text = _pkHost.host;
         _hostNameField.text = _pkHost.hostName;
-        _sshPortField.text = [NSString stringWithFormat:@"%@",_pkHost.port];
+        if(_pkHost.port != nil){
+            _sshPortField.text = [NSString stringWithFormat:@"%@",_pkHost.port];
+        }
         _userField.text = _pkHost.user;
         _passwordField.text = _pkHost.password;
         _hostKeyDetail.text = _pkHost.key;
         _predictionDetail.text = [PKHosts predictionStringForRawValue:_pkHost.prediction.intValue];
-        _moshPortField.text = [NSString stringWithFormat:@"%@",_pkHost.moshPort];
+        if(_pkHost.moshPort != nil){
+            _moshPortField.text = [NSString stringWithFormat:@"%@",_pkHost.moshPort];
+        }
         _startUpCmdField.text = _pkHost.moshStartup;
         
     }
@@ -106,7 +110,7 @@
     NSString *errorMsg;
     if ([identifier isEqualToString:@"unwindFromCreate"]) {
         //An existing host with same name should not exist, but while editing an existing Host, it should not show error
-        if ([PKHosts withHost:_hostField.text] && !_isExistingHost) {
+        if ([PKHosts withHost:_hostField.text] && ![_hostField.text isEqualToString:_pkHost.host]) {
             errorMsg = @"Cannot have two hosts with the same name.";
         } else if ([_hostField.text rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet]].location != NSNotFound) {
             errorMsg = @"Spaces are not permitted in the host.";
