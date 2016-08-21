@@ -67,16 +67,23 @@
 
 
 - (IBAction)importButtonClicked:(id)sender{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    self.importButton.enabled = NO;
-    self.urlTextField.enabled = NO;
-    [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSData *fileData, NSError *error) {
-        if(error == nil){
-            [self performSelectorOnMainThread:@selector(downloadCompletedWithFilePath:) withObject:fileData waitUntilDone:NO];
-        } else {
-            //Show alert
-        }
-    }];
+    if(_urlTextField.text.length > 3 && [[_urlTextField.text substringFromIndex:[_urlTextField.text length]-3]isEqualToString:@"css"]){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        self.importButton.enabled = NO;
+        self.urlTextField.enabled = NO;
+        [PKSettingsFileDownloader downloadFileAtUrl:_urlTextField.text withCompletionHandler:^(NSData *fileData, NSError *error) {
+            if(error == nil){
+                [self performSelectorOnMainThread:@selector(downloadCompletedWithFilePath:) withObject:fileData waitUntilDone:NO];
+            } else {
+                //Show alert
+            }
+        }];
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"URL error" message:@"Please enter valid .css URL" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 - (void)downloadCompletedWithFilePath:(NSData*)fileData{
