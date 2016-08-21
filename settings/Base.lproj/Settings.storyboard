@@ -1081,7 +1081,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter URL address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYp-oT-cuB">
                                                     <rect key="frame" x="17" y="0.0" width="575" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="editChanged:" destination="5uY-Gf-3fe" eventType="editingChanged" id="XEC-b4-bSa"/>
                                                         <action selector="urlTextDidChange:" destination="lav-FK-npF" eventType="editingChanged" id="UfD-Py-TJF"/>
@@ -1293,7 +1293,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter URL address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DcL-Sx-nU8">
                                                     <rect key="frame" x="17" y="0.0" width="575" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="urlTextDidChange:" destination="KGQ-4q-oYw" eventType="editingChanged" id="lfY-Tn-1xG"/>
                                                     </connections>
