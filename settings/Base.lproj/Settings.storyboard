@@ -1185,8 +1185,12 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" tag="2001" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5x-Ei-09Y">
-                                            <rect key="frame" x="114" y="0.5" width="486" height="44"/>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="2001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="10 px" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5x-Ei-09Y">
+                                            <rect key="frame" x="427" y="0.0" width="56" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="56" id="Dck-MA-RIS"/>
+                                                <constraint firstAttribute="height" constant="44" id="dJT-aE-RUP"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             <connections>
@@ -1194,7 +1198,23 @@
                                                 <outlet property="delegate" destination="wNx-Mq-Q3D" id="BcV-sH-e0Y"/>
                                             </connections>
                                         </textField>
+                                        <stepper opaque="NO" tag="2002" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-zw-ejP">
+                                            <rect key="frame" x="487" y="8" width="94" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="SjN-qT-hXy"/>
+                                                <constraint firstAttribute="width" constant="94" id="Xbi-MQ-gaa"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="stepperButtonPressed:" destination="wNx-Mq-Q3D" eventType="valueChanged" id="sUe-9h-stv"/>
+                                            </connections>
+                                        </stepper>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Mmq-zw-ejP" firstAttribute="centerY" secondItem="l2i-ws-PRD" secondAttribute="centerY" id="6vC-9L-gFM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Mmq-zw-ejP" secondAttribute="trailing" constant="11" id="CfC-Qa-Oxu"/>
+                                        <constraint firstItem="Mmq-zw-ejP" firstAttribute="leading" secondItem="f5x-Ei-09Y" secondAttribute="trailing" constant="4" id="KLu-gq-qID"/>
+                                        <constraint firstItem="f5x-Ei-09Y" firstAttribute="centerY" secondItem="l2i-ws-PRD" secondAttribute="centerY" id="cPV-86-I3r"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

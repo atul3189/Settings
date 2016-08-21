@@ -11,13 +11,14 @@
 #import "PKFont.h"
 #import "PKDefaults.h"
 #define FONT_SIZE_FIELD_TAG 2001
+#define FONT_SIZE_STEPPER_TAG 2002
 
 @interface PKAppearanceViewController ()
 
 @property (nonatomic, strong) NSIndexPath *selectedFontIndexPath;
 @property (nonatomic, strong) NSIndexPath *selectedThemeIndexPath;
 @property (weak, nonatomic) UITextField *fontSizeField;
-
+@property (weak, nonatomic) UIStepper *fontSizeStepper;
 @end
 
 @implementation PKAppearanceViewController
@@ -55,7 +56,9 @@
 }
 
 - (void)saveDefaultValues{
-    [PKDefaults setFontSize:[NSNumber numberWithInt:_fontSizeField.text.intValue]];
+    if(_fontSizeField.text != nil && ![_fontSizeField.text isEqualToString:@""]){
+        [PKDefaults setFontSize:[NSNumber numberWithInt:_fontSizeField.text.intValue]];
+    }
     if(_selectedFontIndexPath != nil){
         [PKDefaults setFontName:[[[PKFont all]objectAtIndex:_selectedFontIndexPath.row]name]];
     }
@@ -121,8 +124,10 @@
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fontSizeCell" forIndexPath:indexPath];
         _fontSizeField = [cell viewWithTag:FONT_SIZE_FIELD_TAG];
+        _fontSizeStepper = [cell viewWithTag:FONT_SIZE_STEPPER_TAG];
         if([PKDefaults selectedFontSize] != nil){
-            _fontSizeField.text = [NSString stringWithFormat:@"%@",[PKDefaults selectedFontSize]];
+            _fontSizeStepper.value = [PKDefaults selectedFontSize].integerValue;
+            _fontSizeField.text = [NSString stringWithFormat:@"%@ px",[PKDefaults selectedFontSize]];
         } else {
             _fontSizeField.placeholder = @"10 px";
         }
@@ -198,6 +203,9 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
+}
+- (IBAction)stepperButtonPressed:(id)sender {
+    _fontSizeField.text = [NSString stringWithFormat:@"%d px",(int)[_fontSizeStepper value]];
 }
 
 /*
