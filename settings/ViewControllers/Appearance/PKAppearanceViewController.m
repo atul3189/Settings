@@ -196,8 +196,21 @@
         // Delete the row from the data source
         if(indexPath.section == 0){
             [PKTheme removeThemeAtIndex:(int)indexPath.row];
+            
+            if(indexPath.row < _selectedThemeIndexPath.row){
+                _selectedThemeIndexPath = [NSIndexPath indexPathForRow:_selectedThemeIndexPath.row-1 inSection:0];
+            } else if(indexPath.row == _selectedThemeIndexPath.row){
+                _selectedThemeIndexPath = nil;
+            }
+            
         } else if (indexPath.section == 1){
             [PKFont removeFontAtIndex:(int)indexPath.row];
+            
+            if(indexPath.row < _selectedFontIndexPath.row){
+                _selectedFontIndexPath = [NSIndexPath indexPathForRow:_selectedFontIndexPath.row-1 inSection:0];
+            } else if(indexPath.row == _selectedFontIndexPath.row){
+                _selectedFontIndexPath = nil;
+            }
         }
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
