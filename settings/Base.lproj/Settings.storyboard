@@ -1051,7 +1051,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4a-eE-Iap">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="43"/>
+                                                    <rect key="frame" x="17" y="0.0" width="575" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -1060,7 +1060,7 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="c4a-eE-Iap" firstAttribute="leading" secondItem="9aK-4H-3X5" secondAttribute="leading" constant="8" id="BYO-JY-mDR"/>
+                                                <constraint firstItem="c4a-eE-Iap" firstAttribute="leading" secondItem="9aK-4H-3X5" secondAttribute="leading" constant="17" id="BYO-JY-mDR"/>
                                                 <constraint firstItem="c4a-eE-Iap" firstAttribute="top" secondItem="9aK-4H-3X5" secondAttribute="top" id="c91-Zz-zVV"/>
                                                 <constraint firstAttribute="bottom" secondItem="c4a-eE-Iap" secondAttribute="bottom" id="lB7-tW-ufA"/>
                                                 <constraint firstAttribute="trailing" secondItem="c4a-eE-Iap" secondAttribute="trailing" constant="8" id="tf4-v3-TII"/>
@@ -1079,7 +1079,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter URL address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYp-oT-cuB">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="44"/>
+                                                    <rect key="frame" x="17" y="0.0" width="575" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -1089,10 +1089,10 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gYp-oT-cuB" firstAttribute="leading" secondItem="Ywz-Gy-cwP" secondAttribute="leadingMargin" id="9gi-cB-Nbf"/>
+                                                <constraint firstItem="gYp-oT-cuB" firstAttribute="leading" secondItem="Ywz-Gy-cwP" secondAttribute="leadingMargin" constant="9" id="9gi-cB-Nbf"/>
                                                 <constraint firstItem="gYp-oT-cuB" firstAttribute="centerY" secondItem="Ywz-Gy-cwP" secondAttribute="centerY" id="c1l-88-ryu"/>
                                                 <constraint firstItem="gYp-oT-cuB" firstAttribute="top" secondItem="Ywz-Gy-cwP" secondAttribute="top" id="ndM-5M-mR4"/>
-                                                <constraint firstItem="gYp-oT-cuB" firstAttribute="centerX" secondItem="Ywz-Gy-cwP" secondAttribute="centerX" id="r1l-Qi-dLf"/>
+                                                <constraint firstItem="gYp-oT-cuB" firstAttribute="centerX" secondItem="Ywz-Gy-cwP" secondAttribute="centerX" constant="4.5" id="r1l-Qi-dLf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1269,7 +1269,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Required" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Hg-w4-G8l">
-                                                    <rect key="frame" x="10" y="0.5" width="600" height="43"/>
+                                                    <rect key="frame" x="17" y="0.5" width="575" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -1291,7 +1291,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter URL address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DcL-Sx-nU8">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="44"/>
+                                                    <rect key="frame" x="17" y="0.0" width="575" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -1301,8 +1301,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="DcL-Sx-nU8" firstAttribute="centerY" secondItem="Lo3-9v-S2i" secondAttribute="centerY" id="4Ea-Wg-DLK"/>
-                                                <constraint firstItem="DcL-Sx-nU8" firstAttribute="centerX" secondItem="Lo3-9v-S2i" secondAttribute="centerX" id="GDk-Xl-Pj1"/>
-                                                <constraint firstItem="DcL-Sx-nU8" firstAttribute="leading" secondItem="Lo3-9v-S2i" secondAttribute="leadingMargin" id="jDK-PA-FBh"/>
+                                                <constraint firstItem="DcL-Sx-nU8" firstAttribute="centerX" secondItem="Lo3-9v-S2i" secondAttribute="centerX" constant="4.5" id="GDk-Xl-Pj1"/>
+                                                <constraint firstItem="DcL-Sx-nU8" firstAttribute="leading" secondItem="Lo3-9v-S2i" secondAttribute="leadingMargin" constant="9" id="jDK-PA-FBh"/>
                                                 <constraint firstItem="DcL-Sx-nU8" firstAttribute="top" secondItem="Lo3-9v-S2i" secondAttribute="top" id="tSx-qM-fZi"/>
                                             </constraints>
                                         </tableViewCellContentView>
