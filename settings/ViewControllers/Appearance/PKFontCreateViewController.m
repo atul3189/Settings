@@ -67,7 +67,7 @@
 
 
 - (IBAction)importButtonClicked:(id)sender{
-    if(_urlTextField.text.length > 3 && [[_urlTextField.text substringFromIndex:[_urlTextField.text length]-3]isEqualToString:@"css"]){
+    if(_urlTextField.text.length > 4 && [[_urlTextField.text substringFromIndex:[_urlTextField.text length]-4]isEqualToString:@".css"]){
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         self.importButton.enabled = NO;
         self.urlTextField.enabled = NO;
