@@ -78,10 +78,12 @@
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Network error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alertController addAction:ok];
-                [self presentViewController:alertController animated:YES completion:nil];
-                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                self.urlTextField.enabled = YES;
-                self.importButton.enabled = YES;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self presentViewController:alertController animated:YES completion:nil];
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                    self.urlTextField.enabled = YES;
+                    self.importButton.enabled = YES;
+                });
             }
         }];
     } else {
