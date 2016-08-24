@@ -1031,12 +1031,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kCi-Xq-gmO" id="jDE-yB-OYe">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXs-km-NBf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                                </webView>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1137,6 +1131,7 @@
                     <connections>
                         <outlet property="importButton" destination="gOA-o9-poV" id="usK-NW-nun"/>
                         <outlet property="nameTextField" destination="c4a-eE-Iap" id="bra-OB-z6a"/>
+                        <outlet property="previewContainerView" destination="jDE-yB-OYe" id="6jK-ps-7Sa"/>
                         <outlet property="urlTextField" destination="gYp-oT-cuB" id="lrW-nz-0VX"/>
                         <segue destination="nLa-E1-XB0" kind="unwind" identifier="unwindFromAddTheme" unwindAction="unwindFromAddTheme:" id="3zP-dz-8v8"/>
                     </connections>
@@ -1269,12 +1264,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CLw-Xe-nQM" id="eT5-xy-V3g">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kd4-j6-Gxq">
-                                                    <rect key="frame" x="0.0" y="0.5" width="600" height="44"/>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                                                </webView>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -1368,6 +1357,7 @@
                     <connections>
                         <outlet property="importButton" destination="A4V-pb-aQj" id="4ck-Sr-WR4"/>
                         <outlet property="nameTextField" destination="4Hg-w4-G8l" id="EgW-Eb-Hjk"/>
+                        <outlet property="previewContainerView" destination="eT5-xy-V3g" id="bvt-rR-Xdx"/>
                         <outlet property="urlTextField" destination="DcL-Sx-nU8" id="bd0-Qg-rBE"/>
                         <segue destination="cMi-yw-27u" kind="unwind" identifier="unwindFromAddFont" unwindAction="unwindFromAddFont:" id="8VD-nP-edX"/>
                     </connections>

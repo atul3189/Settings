@@ -9,6 +9,7 @@
 #import "PKFontCreateViewController.h"
 #import "PKSettingsFileDownloader.h"
 #import "PKFont.h"
+@import WebKit;
 
 @interface PKFontCreateViewController ()
 
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) NSData *tempFileData;
 @property (assign, nonatomic) BOOL downloadCompleted;
+@property (weak, nonatomic) IBOutlet UIView *previewContainerView;
 
 @end
 
@@ -25,6 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //To setup WKWebView as its currently not available through storyboards
+    [self setupWebView];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -46,6 +51,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setupWebView{
+    WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, self.previewContainerView.frame.size.width, self.previewContainerView.frame.size.height)];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
+    [self.previewContainerView addSubview:webView];
+    
 }
 
 # pragma mark - Validations
